@@ -1,0 +1,8 @@
+export const GET_RECEIVE_MESSAGES = "get_receive_message"
+export const GET_RECEIVE_MESSAGES_SUCCESSFUL = "get_receive_messages_successful"
+export const GET_MASSIVE_MESSAGES = "get_massive_message"
+export const GET_MASSIVE_MESSAGES_SUCCESSFUL = "get_massive_messages_successful"
+export const UPDATE_MASSIVE_MESSAGE = "update_massive_message"
+export const CREATE_MASSIVE_MESSAGE = "create_massive_message"
+export const CREATE_MASSIVE_MESSAGE_SUCCESSFUL = "create_massive_message_successfull"
+export const CREATE_MASSIVE_MESSAGE_FAILED = "create_massive_message_failed"

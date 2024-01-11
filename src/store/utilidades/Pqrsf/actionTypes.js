@@ -1,0 +1,7 @@
+export const GET_SENT_PQRSF = "get_sent_pqrsf"
+export const GET_SENT_PQRSF_SUCCESSFUL = "get_sent_pqrsf_successful"
+export const GET_PQRSF = "get_pqrsf"
+export const GET_PQRSF_SUCCESSFUL = "get_pqrsf_successful"
+export const CREATE_PQRSF = "create_pqrsf"
+export const CREATE_PQRSF_SUCCESSFUL = "create_pqrsf_successfull"
+export const CREATE_PQRSF_FAILED = "create_pqrsf_failed"

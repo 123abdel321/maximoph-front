@@ -1,0 +1,65 @@
+body::after {
+  background-size: cover;
+  position: fixed;
+  z-index: -1;
+  content: "";
+  opacity: 1;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+.background-1::after {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../images/custom/general-background-1.jpg');
+}
+
+.background-2::after {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../images/custom/general-background-2.png');
+}
+
+.background-3::after {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../images/custom/general-background-3.jpg');
+}
+
+.background-4::after {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../images/custom/general-background-4.jpg');
+}
+
+.background-5::after {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../images/custom/general-background-5.jpg');
+}
+
+.background-6::after {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../images/custom/general-background-6.png');
+}
+
+.background-7::after {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../images/custom/general-background-7.jpg');
+}
+
+.background-8::after {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../images/custom/general-background-8.jpg');
+}
+
+.background-9::after {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../images/custom/general-background-9.jpg');
+}
+
+.background-10::after {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../images/custom/general-background-10.jpg');
+}
+
+.background-11::after {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../images/custom/general-background-11.jpg');
+}
+
+.background-texture {
+  background:
+  radial-gradient(black 7%, transparent 8%) 0 0,
+  radial-gradient(black 7%, transparent 8%) 8px 8px,
+  radial-gradient(rgba(255,255,255,.1) 7%, transparent 8%) 0 1px,
+  radial-gradient(rgba(255,255,255,.1) 7%, transparent 8%) 8px 9px;
+  background-color:#5e9984;
+  background-size:16px 16px;
+}

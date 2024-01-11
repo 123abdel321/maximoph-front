@@ -1,0 +1,18 @@
+export const GET_CYCLICAL_BILLS = "get_cyclical_bills"
+export const GET_CYCLICAL_BILLS_SUCCESSFUL = "get_cyclical_bills_successful"
+export const EDIT_CYCLICAL_BILL = "edit_cyclical_bill"
+export const EDIT_CYCLICAL_BILL_SUCCESSFUL = "edit_cyclical_bill_successful"
+export const EDIT_CYCLICAL_BILL_FAILED = "edit_cyclical_bill_failed"
+export const CREATE_CYCLICAL_BILL = "create_cyclical_bill"
+export const CREATE_CYCLICAL_BILL_MASSIVE = "create_cyclical_bill_massive"
+export const CREATE_CYCLICAL_BILL_SUCCESSFUL = "create_cyclical_bill_successfull"
+export const CREATE_CYCLICAL_BILL_FAILED = "create_cyclical_bill_failed"
+
+export const PROCESS_CYCLICAL_BILL = "process_cyclical_bill"
+export const PROCESS_CYCLICAL_BILL_SUCCESSFUL = "process_cyclical_bill_successfull"
+export const PROCESS_CYCLICAL_BILL_FAILED = "process_cyclical_bill_failed"
+
+export const DELETE_CYCLICAL_BILL = "delete_cyclical_bill"
+export const DELETE_CYCLICAL_BILL_MASSIVE = "delete_cyclical_bill_massive"
+export const DELETE_CYCLICAL_BILL_SUCCESSFUL = "delete_cyclical_bill_successfull"
+export const DELETE_CYCLICAL_BILL_FAILED = "delete_cyclical_bill_failed"
