@@ -376,7 +376,7 @@ const IndexTareas = props => {
     }
 
     if(tarea.imagen){
-      tarea.imagenView = (process.env.REACT_API_URL||'http://localhost:3002')+"/uploads/homeworks/"+tarea.imagen;
+      tarea.imagenView = (process.env.REACT_API_URL||'http://24.144.93.62:3002')+"/uploads/homeworks/"+tarea.imagen;
     }
 
     let aTiempo = '-';

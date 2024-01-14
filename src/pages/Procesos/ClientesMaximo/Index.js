@@ -127,7 +127,7 @@ const IndexClientesMaximo = props => {
       });
 
       if(customer.logo){
-        const IMAGE_URL = (process.env.REACT_API_URL||'http://localhost:3002')+"/uploads/company-logo/"+customer.logo;
+        const IMAGE_URL = (process.env.REACT_API_URL||'http://24.144.93.62:3002')+"/uploads/company-logo/"+customer.logo;
         const response = await fetch(IMAGE_URL);
         const blob = await response.blob();
         const fileType = blob.type;
@@ -333,7 +333,7 @@ const IndexClientesMaximo = props => {
         {
           Header: 'Logo',
           accessor: row =>{
-            const IMAGE_URL = (process.env.REACT_API_URL||'http://localhost:3002')+"/uploads/company-logo/"+row.logo;
+            const IMAGE_URL = (process.env.REACT_API_URL||'http://24.144.93.62:3002')+"/uploads/company-logo/"+row.logo;
             if(row.logo){
               return (<p className="text-center">
                 <img

@@ -246,7 +246,7 @@ const IndexMensajesMasivos = props => {
             sticky: true,
             Header: 'Operaciones',
             accessor: row => {
-              const IMAGE_URL = (process.env.REACT_API_URL||'http://localhost:3002')+"/uploads/messages/"+row.imagen;
+              const IMAGE_URL = (process.env.REACT_API_URL||'http://24.144.93.62:3002')+"/uploads/messages/"+row.imagen;
               row.IMAGE_URL = IMAGE_URL;
               return (<p className="text-center">
                 <Button color={'info'}className="btn-sm" onClick={()=>viewMessage(row.titulo, row.descripcion, IMAGE_URL)}>
@@ -259,7 +259,7 @@ const IndexMensajesMasivos = props => {
           {
             Header: 'Imágen mensaje',
               accessor: row =>{
-                const IMAGE_URL = (process.env.REACT_API_URL||'http://localhost:3002')+"/uploads/messages/"+row.imagen;
+                const IMAGE_URL = (process.env.REACT_API_URL||'http://24.144.93.62:3002')+"/uploads/messages/"+row.imagen;
                 row.IMAGE_URL = IMAGE_URL;
                 if(row.imagen){
                   return (<p className="text-center" style={{cursor: 'pointer'}} onClick={()=>viewMessage(row.titulo, row.descripcion, IMAGE_URL)}>
