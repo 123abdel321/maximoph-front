@@ -227,7 +227,7 @@ const TareasRecibidas = props => {
     }
 
     if(tarea.imagen){
-      tarea.imagenView = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com/')+"/uploads/homeworks/"+tarea.imagen;
+      tarea.imagenView = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/homeworks/"+tarea.imagen;
     }
 
     let aTiempo = '-';

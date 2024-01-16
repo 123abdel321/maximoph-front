@@ -155,7 +155,7 @@ const SidebarContent = props => {
   }
 
   let IMAGE_URL = logoCompany;
-  if(IMAGE_URL) IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com/')+"/uploads/company-logo/"+IMAGE_URL;
+  if(IMAGE_URL) IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/company-logo/"+IMAGE_URL;
 
   if(([24,25,26]).indexOf(JSON.parse(localStorage.getItem("authUser")).id_rol)<0){//USUARIO DE MAXIMO P.H
     return (

@@ -875,7 +875,7 @@ const IndexFacturacionHistorica = props => {
               data-dz-thumbnail=""
               className="avatar-xxl rounded bg-light"
               alt={modalComprobante?.imagen}
-              src={(process.env.REACT_API_URL||'https://phapi.portafolioerp.com/')+"/uploads/vouchers-Bill-cash-receipts/"+modalComprobante?.imagen}
+              src={(process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/vouchers-Bill-cash-receipts/"+modalComprobante?.imagen}
             />
           </p>
         </div>

@@ -5,7 +5,7 @@ import accessToken from "./jwt-token-access/accessToken";
 const token = accessToken;
 
 //apply base url for axios
-const API_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com/')+"/api";
+const API_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/api";
 
 const axiosApi = axios.create({
   baseURL: API_URL,

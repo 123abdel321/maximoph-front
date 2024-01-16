@@ -301,7 +301,7 @@ const IndexVisitas = props => {
         {
             Header: 'Foto Visita',
             accessor: row =>{
-              const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com/')+"/uploads/visitors/"+row.imagen;
+              const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/visitors/"+row.imagen;
               row.IMAGE_URL = IMAGE_URL;
               if(row.imagen){
                 return (<p className="text-center" style={{cursor: 'pointer'}} onClick={()=>setCurrentVisitor(row)}>
@@ -625,7 +625,7 @@ const IndexVisitas = props => {
                               (
                                 visitor.avatar ?
                                 (<img
-                                  src={(process.env.REACT_API_URL||'https://phapi.portafolioerp.com/')+(`/uploads/${visitor.tipoPatern=='VEHICULO'?'vehicles':'avatar'}/`)+visitor.avatar}
+                                  src={(process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+(`/uploads/${visitor.tipoPatern=='VEHICULO'?'vehicles':'avatar'}/`)+visitor.avatar}
                                   alt=""
                                   style={{height: "130px"}}
                                   className="img-thumbnail"

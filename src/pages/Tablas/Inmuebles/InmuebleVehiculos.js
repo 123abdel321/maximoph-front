@@ -222,7 +222,7 @@ const IndexInmuebleVehiculos = props => {
           {
             Header: 'Foto',
             accessor: row =>{
-              const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com/')+"/uploads/vehicles/"+row.avatar;
+              const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/vehicles/"+row.avatar;
               if(row.avatar){
                 return (<p className="text-center">
                   <img
@@ -336,7 +336,7 @@ const IndexInmuebleVehiculos = props => {
         setUploadFotoInmuebleVehiculoModal(true);
 
         if(inmuebleVehiculo.avatar){
-          const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com/')+"/uploads/vehicles/"+inmuebleVehiculo.avatar;
+          const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/vehicles/"+inmuebleVehiculo.avatar;
           const response = await fetch(IMAGE_URL);
           const blob = await response.blob();
           const fileType = blob.type;

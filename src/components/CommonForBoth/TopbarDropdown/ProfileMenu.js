@@ -45,7 +45,7 @@ const ProfileMenu = props => {
         setusername((obj.nombre||obj.email));
       }
       const PATH_AVATAR = JSON.parse(localStorage.getItem("authUser")).avatar_origin=='user' ? 'company-logo' : 'avatar';
-      const AVATAR = JSON.parse(localStorage.getItem("authUser")).avatar ? (process.env.REACT_API_URL||'https://phapi.portafolioerp.com/')+"/uploads/"+PATH_AVATAR+"/"+JSON.parse(localStorage.getItem("authUser")).avatar : user2;
+      const AVATAR = JSON.parse(localStorage.getItem("authUser")).avatar ? (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/"+PATH_AVATAR+"/"+JSON.parse(localStorage.getItem("authUser")).avatar : user2;
 
       setAvatarHeader(AVATAR);
     }

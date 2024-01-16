@@ -69,7 +69,7 @@ const IndexPQRSF = props => {
         contentRaw = draftToHtml(convertToRaw(contentRaw.getCurrentContent()));
 
     if(imagen){
-      imagen = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com/')+"/uploads/pqrsf/"+imagen;
+      imagen = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/pqrsf/"+imagen;
     }
 
     setModalViewPqrsf({titulo, descripcion: contentRaw, imagen});
