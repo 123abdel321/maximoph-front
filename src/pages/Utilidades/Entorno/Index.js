@@ -115,7 +115,7 @@ const IndexEntorno = props => {
       dataSummaryErp.access.map(access=>newAccessModule[access.permiso] = (access.asignado==1?true:false));
 
       if(dataSummaryErp.logo){
-        const IMAGE_URL = (process.env.REACT_API_URL||'http://24.144.93.62:3002')+"/uploads/company-logo/"+dataSummaryErp.logo;
+        const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com/')+"/uploads/company-logo/"+dataSummaryErp.logo;
         const response = await fetch(IMAGE_URL);
         const blob = await response.blob();
         const fileType = blob.type;
