@@ -306,7 +306,7 @@ const IndexInmuebles = props => {
       'inmueble-numero-interno-unidad': Yup.string().required("Por favor ingresa el número interno de unidad"),
       'inmueble-area': Yup.number().required("Por favor ingresa el área"),
       'inmueble-coeficiente': Yup.number().required("Por favor ingresa el coeficiente"),
-      'inmueble-valor-total-administracion': Yup.number().required("Por favor ingresa el valor total de administración")
+      'inmueble-valor-total-administracion': Yup.string().required("Por favor ingresa el valor total de administración")
     }),
     onSubmit: (values) => {
       let inmuebleValues = {};
@@ -337,6 +337,9 @@ const IndexInmuebles = props => {
       
       inmuebleValues["tipo"] = tipo.value;
       inmuebleValues["id_inmueble_zona"] = zona.value;
+      
+      initialValuesPropertiesForm["inmueble-id-inmueble-zona"] = zona.value;
+      initialValuesPropertiesForm["inmueble-tipo"] = zona.value;
       
       if(inmuebleValues["numero_perros"]=='') inmuebleValues["numero_perros"] = '0';
       if(inmuebleValues["numero_gatos"]=='') inmuebleValues["numero_gatos"] = '0';
@@ -728,9 +731,7 @@ const IndexInmuebles = props => {
                                 <Form
                                   onSubmit={(e) => {
                                     e.preventDefault();
-                                    
                                     validation.submitForm();
-
                                     return false;
                                   }}>
                                   <Row>
