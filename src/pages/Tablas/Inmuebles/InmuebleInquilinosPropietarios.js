@@ -505,7 +505,7 @@ const IndexInmuebleInquilinoPropietario = props => {
                         ) : null}
                       </div>
                   </Col>
-                  <Col md={2}>
+                  <Col md={6} sm={6} lg={2}>
                       <label className="col-md-12 col-form-label">Notificación PUSH *</label>
                       <div className="col-md-12">
                       <Select
@@ -526,7 +526,7 @@ const IndexInmuebleInquilinoPropietario = props => {
                       />
                       </div>
                   </Col>
-                  <Col md={2}>
+                  <Col md={6} sm={6} lg={2}>
                       <label className="col-md-12 col-form-label">Notificación Mail *</label>
                       <div className="col-md-12">
                       <Select
@@ -547,7 +547,7 @@ const IndexInmuebleInquilinoPropietario = props => {
                       />
                       </div>
                   </Col>
-                  <Col md={2}>
+                  <Col md={6} sm={6} lg={2}>
                       <label className="col-md-12 col-form-label">Notificación Física *</label>
                       <div className="col-md-12">
                       <Select
@@ -573,7 +573,7 @@ const IndexInmuebleInquilinoPropietario = props => {
               <Row>
                 <Col md={9}>
                 </Col>
-                <Col md={3} className="text-end">
+                <Col md={12} sm={12} lg={12} className="text-end">
                   {
                     loadingText=="Guardando ..." ?
                       (

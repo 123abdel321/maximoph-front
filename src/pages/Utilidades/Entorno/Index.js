@@ -81,23 +81,24 @@ const IndexEntorno = props => {
 
   const syncDataERPfn = async ()=>{
     setLoadingTextAPI("Obteniendo centros de costos actualziados de su ERP ...");
-
     dispatch(syncDataERP({origin: 'centro_costos'}, ()=>{
       
       setLoadingTextAPI("Obteniendo comprobantes actualziados de su ERP ...");
-
       dispatch(syncDataERP({origin: 'comprobantes'}, ()=>{ 
         
         setLoadingTextAPI("Obteniendo cuentas actualziadas de su ERP ...");
-
         dispatch(syncDataERP({origin: 'cuentas'}, ()=>{ 
 
           setLoadingTextAPI("Obteniendo personas actualziadas de su ERP ...");
-
           dispatch(syncDataERP({origin: 'nits'}, ()=>{ 
-            toastr.success("Datos desde el ERP actualizados.", "Operación Ejecutada");
 
-            loadInitData();
+            dispatch(syncDataERP({origin: 'ciudades'}, ()=>{
+              setLoadingTextAPI("Obteniendo ciudades actualziadas de su ERP ...");
+
+              toastr.success("Datos desde el ERP actualizados.", "Operación Ejecutada");
+  
+              loadInitData();
+            }));
           }));
 
         }));
