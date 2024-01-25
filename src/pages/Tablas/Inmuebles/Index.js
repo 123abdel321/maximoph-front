@@ -179,7 +179,7 @@ const IndexInmuebles = props => {
         </Card>
       </Col>
 
-      <Col lg={2}>
+      <Col lg={3}>
         <Card className="blog-stats-wid">
           <CardBody>
             <div className="d-flex flex-wrap">
@@ -198,7 +198,7 @@ const IndexInmuebles = props => {
         </Card>
       </Col>
 
-      <Col lg={4}>
+      <Col lg={3}>
         <Card className="blog-stats-wid">
           <CardBody>
             <div className="d-flex flex-wrap">
@@ -772,12 +772,15 @@ const IndexInmuebles = props => {
                                       <Col md={4}>
                                           <label className="col-md-12 col-form-label">Zona *</label>
                                           <div className="col-md-12">
-                                            <RemoteCombo 
-                                              value={zona}
-                                              data={dataZones}
-                                              disabled={!dataZones.length}
-                                              onChange={(val)=>setZona(val)}
-                                            />
+                                            { dataZones.length ? 
+                                              <RemoteCombo 
+                                                value={zona}
+                                                data={dataZones}
+                                                disabled={!dataZones.length}
+                                                onChange={(val)=>setZona(val)}
+                                              /> :
+                                              <label className="col-md-12 col-form-label" style={{ color: 'red' }}>No posee zonas de tipo inmueble</label>
+                                            }
                                           </div>
                                       </Col>
                                   </Row>
@@ -823,7 +826,7 @@ const IndexInmuebles = props => {
                                           </div>
                                       </Col>
                                       <Col md={4}>
-                                          <label className="col-md-12 col-form-label">Valor Administraciòn * (Ppto Total Anual: {Number(pptoTotal).toLocaleString()})</label>
+                                          <label className="col-md-12 col-form-label">Valor Administración * (Ppto Total Anual: {Number(pptoTotal).toLocaleString()})</label>
                                           <div className="col-md-12">
                                           <Input
                                               type="numeric"
@@ -842,6 +845,7 @@ const IndexInmuebles = props => {
                                             ) : null}
                                           </div>
                                       </Col>
+                                      
                                   </Row>
                                   <Row>
                                       {/*<Col md={2}>
@@ -900,7 +904,7 @@ const IndexInmuebles = props => {
                                   <Row>
                                     <Col md={10}>
                                     </Col>
-                                    <Col md={2} className="text-end">
+                                    <Col md={12} sm={12} lg={12} className="text-end">
                                       {
                                         loadingText=="Guardando ..." ?
                                           (
@@ -933,7 +937,10 @@ const IndexInmuebles = props => {
                             {/*DATATABLE PERSONAS*/}
                             {
                               editInmuebleId ?
-                                (<InmuebleInquilinosPropietarios editInmuebleId={editInmuebleId} onLoad={(persons)=>validateAdmonPercent(persons)}  />)
+                                (<InmuebleInquilinosPropietarios
+                                  editInmuebleId={editInmuebleId}
+                                  onLoad={(persons)=>validateAdmonPercent(persons)}
+                                />)
                               :
                                 (null)
                             }

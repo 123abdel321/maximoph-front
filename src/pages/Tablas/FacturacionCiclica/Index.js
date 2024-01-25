@@ -563,7 +563,7 @@ const IndexFacturacionCiclica = props => {
             <div className="d-flex flex-wrap">
               <div className="me-3">
                 <b className="text-muted mb-2">Inmuebles con Factura</b>
-                <h5 className="mb-0">{Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de {Number(cyclicalBillsTotals.unidades_entorno).toLocaleString()}</h5>
+                <h5 className="mb-0">{Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de {cyclicalBillsTotals.unidades_entorno ? Number(cyclicalBillsTotals.unidades_entorno).toLocaleString() : 0}</h5>
               </div>
 
               <div className="avatar-sm ms-auto">
@@ -711,7 +711,7 @@ const IndexFacturacionCiclica = props => {
                                   return false;
                               }}>
                                   <Row>
-                                      <Col md={3}>
+                                      <Col md={6}>
                                           <label className="col-md-12 col-form-label">Inmueble *</label>
                                           <div className="col-md-12">
                                               <RemoteCombo 
@@ -722,7 +722,7 @@ const IndexFacturacionCiclica = props => {
                                               />
                                           </div>
                                       </Col>
-                                      <Col md={5}>
+                                      <Col md={6}>
                                           <label className="col-md-12 col-form-label">Persona *</label>
                                           <div className="col-md-12">
                                               <RemoteCombo 
@@ -734,7 +734,7 @@ const IndexFacturacionCiclica = props => {
                                               />
                                           </div>
                                       </Col>
-                                      <Col md={2}>
+                                      <Col md={4}>
                                           <label className="col-md-12 col-form-label">Fecha Inicio *</label>
                                           <div className="col-md-12">
                                               <Input
@@ -753,7 +753,7 @@ const IndexFacturacionCiclica = props => {
                                               ) : null}
                                           </div>
                                       </Col>
-                                      <Col md={2}>
+                                      <Col md={4}>
                                           <label className="col-md-12 col-form-label">Fecha Fin</label>
                                           <div className="col-md-12">
                                               <Input
@@ -765,64 +765,62 @@ const IndexFacturacionCiclica = props => {
                                               />
                                           </div>
                                       </Col>
-                                  </Row>
-                                  <Row>
-                                    <Col md={4}>
-                                      <label className="col-md-12 col-form-label">Concepto *</label>
-                                      <div className="col-md-12">
-                                        <RemoteCombo 
-                                          value={concepto}
-                                          data={dataBillingConcepts}
-                                          onChange={(val)=>{
-                                            setConcepto(val);
-                                            if(Number(val.valor)){
-                                              val = Number(val.valor.replaceAll(",","").replaceAll(".","")).toLocaleString('es-ES');
-                                              validation.setFieldValue("factura-ciclica-valor-total", val);
-                                            }else{
-                                              validation.setFieldValue("factura-ciclica-valor-total", "0");
-                                            }
-                                          }}
-                                          disabled={dataBillingConcepts.length==0}
-                                        />
-                                      </div>
-                                    </Col>
-                                
-                                
-                                    <Col md={2}>
-                                      <label className="col-md-12 col-form-label">Valor *</label>
-                                      <div className="col-md-12">
-                                        <Input
-                                          type="numeric"
-                                          className="form-control"
-                                          name="factura-ciclica-valor-total"
-                                          value={validation.values['factura-ciclica-valor-total'] || ""}
-                                          onChange={(e)=>{
-                                            let val = Number(e.target.value.replaceAll(",","").replaceAll(".","")).toLocaleString('es-ES');
-                                            validation.setFieldValue("factura-ciclica-valor-total", val);
-                                          }}
-                                          onBlur={validation.handleBlur}
-                                          invalid={
-                                            validation.touched['factura-ciclica-valor-total'] && validation.errors['factura-ciclica-valor-total'] && !validation.values['factura-ciclica-valor-total'] ? true : false
-                                          }
-                                        />
-                                        {validation.touched['factura-ciclica-valor-total'] && validation.errors['factura-ciclica-valor-total'] && !validation.values['factura-ciclica-valor-total'] ? (
-                                          <FormFeedback type="invalid">{validation.errors['factura-ciclica-valor-total']}</FormFeedback>
-                                        ) : null}
-                                      </div>
-                                    </Col>
-
-                                    <Col md={6}>
-                                      <label className="col-md-12 col-form-label">Observación</label>
-                                      <div className="col-md-12">
-                                        <Input
-                                            type="text"
-                                            className="form-control"
-                                            name="factura-ciclica-observacion"
-                                            value={validation.values['factura-ciclica-observacion'] || ""}
-                                            onChange={validation.handleChange}
+                                      
+                                      <Col md={4}>
+                                        <label className="col-md-12 col-form-label">Concepto *</label>
+                                        <div className="col-md-12">
+                                          <RemoteCombo 
+                                            value={concepto}
+                                            data={dataBillingConcepts}
+                                            onChange={(val)=>{
+                                              setConcepto(val);
+                                              if(Number(val.valor)){
+                                                val = Number(val.valor.replaceAll(",","").replaceAll(".","")).toLocaleString('es-ES');
+                                                validation.setFieldValue("factura-ciclica-valor-total", val);
+                                              }else{
+                                                validation.setFieldValue("factura-ciclica-valor-total", "0");
+                                              }
+                                            }}
+                                            disabled={dataBillingConcepts.length==0}
                                           />
-                                      </div>
-                                    </Col>      
+                                        </div>
+                                      </Col>
+                                  
+                                      <Col md={4}>
+                                        <label className="col-md-12 col-form-label">Valor *</label>
+                                        <div className="col-md-12">
+                                          <Input
+                                            type="numeric"
+                                            className="form-control"
+                                            name="factura-ciclica-valor-total"
+                                            value={validation.values['factura-ciclica-valor-total'] || ""}
+                                            onChange={(e)=>{
+                                              let val = Number(e.target.value.replaceAll(",","").replaceAll(".","")).toLocaleString('es-ES');
+                                              validation.setFieldValue("factura-ciclica-valor-total", val);
+                                            }}
+                                            onBlur={validation.handleBlur}
+                                            invalid={
+                                              validation.touched['factura-ciclica-valor-total'] && validation.errors['factura-ciclica-valor-total'] && !validation.values['factura-ciclica-valor-total'] ? true : false
+                                            }
+                                          />
+                                          {validation.touched['factura-ciclica-valor-total'] && validation.errors['factura-ciclica-valor-total'] && !validation.values['factura-ciclica-valor-total'] ? (
+                                            <FormFeedback type="invalid">{validation.errors['factura-ciclica-valor-total']}</FormFeedback>
+                                          ) : null}
+                                        </div>
+                                      </Col>
+
+                                      <Col md={4}>
+                                        <label className="col-md-12 col-form-label">Observación</label>
+                                        <div className="col-md-12">
+                                          <Input
+                                              type="text"
+                                              className="form-control"
+                                              name="factura-ciclica-observacion"
+                                              value={validation.values['factura-ciclica-observacion'] || ""}
+                                              onChange={validation.handleChange}
+                                            />
+                                        </div>
+                                      </Col>
                                   </Row>
                                   <br />
                                   <Row>
@@ -848,7 +846,6 @@ const IndexFacturacionCiclica = props => {
                                       }
                                     </Col>
                                   </Row>
-                                  <br />
                               </Form>
                             {/*FORM GENERAL*/}
                           </Col>

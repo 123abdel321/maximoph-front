@@ -265,13 +265,13 @@ const IndexFacturacionCiclica = props => {
     return (<Row >
       <Col lg={12} >
         <Row>
-          <Col lg={3}>
+          <Col lg={4}>
             <Card className="mini-stats-wid">
               <CardBody>
                 <div className="d-flex flex-wrap">
                   <div className="me-3">
                     <b className="text-muted mb-2">Inmuebles con Factura</b>
-                    <h5 className="mb-0">{Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de {Number(cyclicalBillsTotals.unidades_entorno).toLocaleString()}</h5>
+                    <h5 className="mb-0">{Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de { cyclicalBillsTotals.unidades_ingresadas ? Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString() : 0}</h5>
                   </div>
 
                   <div className="avatar-sm ms-auto">
@@ -284,7 +284,7 @@ const IndexFacturacionCiclica = props => {
             </Card>
           </Col>
           
-          <Col lg={3}>
+          <Col lg={4}>
             <Card className="mini-stats-wid">
               <CardBody>
                 <div className="d-flex flex-wrap">
@@ -303,7 +303,7 @@ const IndexFacturacionCiclica = props => {
             </Card>
           </Col>
 
-          <Col lg={3}>
+          <Col lg={4}>
             <Card className="blog-stats-wid">
               <CardBody>
                 <div className="d-flex flex-wrap">
@@ -322,7 +322,7 @@ const IndexFacturacionCiclica = props => {
             </Card>
           </Col>
 
-          <Col lg={3}>
+          <Col lg={4}>
             <Card className="blog-stats-wid">
               <CardBody>
                 <div className="d-flex flex-wrap">
@@ -340,18 +340,14 @@ const IndexFacturacionCiclica = props => {
               </CardBody>
             </Card>
           </Col>
-        </Row>
-      </Col>
 
-      <Col lg={12} >
-        <Row>
-          <Col lg={3}>
+          <Col lg={4}>
             <Card className="blog-stats-wid">
               <CardBody>
                 <div className="d-flex flex-wrap">
                   <div className="me-3">
-                    <b className="text-muted mb-2">Concepto Administraciòn - {Math.round((Number(cyclicalBillsTotals.valor_total_administracion)/Number(cyclicalBillsTotals.valor_total_facturas))*100).toString()}%</b>
-                    <h6 className="mb-0">$ {Number(cyclicalBillsTotals.valor_total_administracion).toLocaleString()} de $ {Math.round(Number(cyclicalBillsTotals.ppto_entorno)/12).toLocaleString()}</h6>
+                    <b className="text-muted mb-2">Concepto Administración - { cyclicalBillsTotals.valor_total_administracion ? Math.round((Number(cyclicalBillsTotals.valor_total_administracion)/Number(cyclicalBillsTotals.valor_total_facturas))*100).toString() : 0}%</b>
+                    <h6 className="mb-0">$ {Number(cyclicalBillsTotals.valor_total_administracion).toLocaleString()} de $ {cyclicalBillsTotals.ppto_entorno ? Math.round(Number(cyclicalBillsTotals.ppto_entorno)/12).toLocaleString() : 0}</h6>
                   </div>
 
                   <div className="avatar-sm ms-auto">
@@ -363,6 +359,12 @@ const IndexFacturacionCiclica = props => {
               </CardBody>
             </Card>
           </Col>
+
+        </Row>
+      </Col>
+
+      <Col lg={12} >
+        <Row>
           {cyclicalBillsTotals.concepts.map((concept, index)=>(<Col lg={3} key={index}>
             <Card className="blog-stats-wid">
               <CardBody>
@@ -492,7 +494,7 @@ const IndexFacturacionCiclica = props => {
                                       let errors = [];
 
                                       if(Number(cyclicalBillsTotals.unidades_ingresadas)!=Number(cyclicalBillsTotals.unidades_entorno)){
-                                        errors.push(`Inmuebles con Factura Registradas: ${Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de ${Number(cyclicalBillsTotals.unidades_entorno).toLocaleString()}`);
+                                        errors.push(`Inmuebles con Factura Registradas: ${Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de ${cyclicalBillsTotals.unidades_entorno}`);
                                       }
                                       
                                       if(Number(cyclicalBillsTotals.coeficiente_ingresado)!=Number(cyclicalBillsTotals.coeficiente_entorno)){

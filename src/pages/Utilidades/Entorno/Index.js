@@ -387,8 +387,8 @@ const IndexEntorno = props => {
         entornoValues['id_comprobante_gastos_erp'] = comprobanteGasto.value;
         entornoValues['id_comprobante_pagos_erp'] = comprobantePago.value;
         entornoValues['id_comprobante_recibos_caja_erp'] = comprobanteReciboCaja.value;
-        entornoValues['id_cuenta_descuento_erp'] = cuentaDscto.value;
-        entornoValues['id_cuenta_anticipos_erp'] = cuentaAnticipo.value;
+        entornoValues['id_cuenta_descuento_erp'] = cuentaDscto?.value;
+        entornoValues['id_cuenta_anticipos_erp'] = cuentaAnticipo?.value;
         entornoValues['id_cuenta_ingreso_recibos_caja_erp'] = cuentaIngresoRecibosCaja.value;
         entornoValues['id_cuenta_egreso_pagos_erp'] = cuentaEgresoPagos.value;
         entornoValues['id_cuenta_ingreso_pasarela_erp'] = cuentaIngresoPasarela?.value;

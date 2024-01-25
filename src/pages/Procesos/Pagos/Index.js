@@ -419,27 +419,8 @@ const IndexPagos = props => {
                               return false;
                             }}>
                               <Row>
-                                <Col md={2}>
-                                    <label className="col-md-12 col-form-label">Consecutivo *</label>
-                                    <div className="col-md-12">
-                                      <Input
-                                        type="numeric"
-                                        className="form-control"
-                                        name="pago-consecutivo"
-                                        disabled={true}
-                                        value={validation.values['pago-consecutivo'] || ""}
-                                        onChange={validation.handleChange}
-                                        onBlur={validation.handleBlur}
-                                        invalid={
-                                          validation.touched['pago-consecutivo'] && validation.errors['pago-consecutivo'] && !validation.values['pago-consecutivo'] ? true : false
-                                        }
-                                      />
-                                      {validation.touched['pago-consecutivo'] && validation.errors['pago-consecutivo'] && !validation.values['pago-consecutivo'] ? (
-                                        <FormFeedback type="invalid">{validation.errors['pago-consecutivo']}</FormFeedback>
-                                      ) : null}
-                                    </div>
-                                </Col>
-                                <Col md={3}>
+                                
+                                <Col lg={3} md={4} sm={4}>
                                     <label className="col-md-12 col-form-label">Proveedor *</label>
                                     <div className="col-md-12">
                                       <RemoteCombo 
@@ -455,38 +436,36 @@ const IndexPagos = props => {
                                       />
                                     </div>
                                 </Col>
-                                <Col md={2}>
-                                    <label className="col-md-12 col-form-label">Fecha Pago*</label>
-                                    <div className="col-md-12">
-                                      <Input
-                                          type="date"
-                                          className="form-control"
-                                          name="pago-fecha-pago"
-                                          value={validation.values['pago-fecha-pago'] || ""}
-                                          onChange={(e)=>{
-                                            if(controlFechaDigitacion==0&&new Date(e.target.value)<=new Date()){
-                                              validation.handleChange(e);
-                                            }else if(controlFechaDigitacion==1&&new Date(e.target.value)==new Date()){
-                                              validation.handleChange(e);
-                                            }else if(controlFechaDigitacion==2&&new Date(e.target.value)<=new Date()){
-                                              var fechaLimite = new Date();
-                                              fechaLimite.setDate(new Date().getDate() - 30);
-                                              if(new Date(e.target.value)>fechaLimite){
-                                                validation.handleChange(e);
-                                              }
-                                            }
-                                          }}
-                                          onBlur={validation.handleBlur}
-                                          invalid={
-                                            validation.touched['pago-fecha-pago'] && validation.errors['pago-fecha-pago'] && !validation.values['pago-fecha-pago'] ? true : false
+                                <Col lg={3} md={4} sm={4}>
+                                    <label className="col-form-label">Fecha Pago*</label>
+                                    <Input
+                                      type="date"
+                                      className="form-control"
+                                      name="pago-fecha-pago"
+                                      value={validation.values['pago-fecha-pago'] || ""}
+                                      onChange={(e)=>{
+                                        if(controlFechaDigitacion==0&&new Date(e.target.value)<=new Date()){
+                                          validation.handleChange(e);
+                                        }else if(controlFechaDigitacion==1&&new Date(e.target.value)==new Date()){
+                                          validation.handleChange(e);
+                                        }else if(controlFechaDigitacion==2&&new Date(e.target.value)<=new Date()){
+                                          var fechaLimite = new Date();
+                                          fechaLimite.setDate(new Date().getDate() - 30);
+                                          if(new Date(e.target.value)>fechaLimite){
+                                            validation.handleChange(e);
                                           }
-                                        />
-                                        {validation.touched['pago-fecha-pago'] && validation.errors['pago-fecha-pago'] && !validation.values['pago-fecha-pago'] ? (
-                                          <FormFeedback type="invalid">{validation.errors['pago-fecha-pago']}</FormFeedback>
-                                        ) : null}
-                                    </div>
+                                        }
+                                      }}
+                                      onBlur={validation.handleBlur}
+                                      invalid={
+                                        validation.touched['pago-fecha-pago'] && validation.errors['pago-fecha-pago'] && !validation.values['pago-fecha-pago'] ? true : false
+                                      }
+                                    />
+                                    {validation.touched['pago-fecha-pago'] && validation.errors['pago-fecha-pago'] && !validation.values['pago-fecha-pago'] ? (
+                                      <FormFeedback type="invalid">{validation.errors['pago-fecha-pago']}</FormFeedback>
+                                    ) : null}
                                 </Col>
-                                <Col md={2}>
+                                <Col lg={3} md={4} sm={4}>
                                   <label className="col-md-12 col-form-label">Cuenta de Egreso Pago *</label>
                                   <div className="col-md-12">
                                       <RemoteCombo 
@@ -497,7 +476,7 @@ const IndexPagos = props => {
                                       />
                                   </div>
                                 </Col>
-                                <Col md={3}>
+                                <Col lg={3} md={4} sm={4}>
                                     <label className="col-md-12 col-form-label">Observación</label>
                                     <div className="col-md-12">
                                       <Input
@@ -513,9 +492,7 @@ const IndexPagos = props => {
                                       />
                                     </div>
                                 </Col>
-                              </Row>
-                              <Row>
-                                <Col md={3}>
+                                <Col lg={3} md={4} sm={4}>
                                   <label className="col-md-12 col-form-label">Total Saldo*</label>
                                   <div className="col-md-12">
                                       <input
@@ -527,7 +504,7 @@ const IndexPagos = props => {
                                       />
                                   </div>
                                 </Col>
-                                <Col md={3}>
+                                <Col lg={3} md={4} sm={4}>
                                     <label className="col-md-12 col-form-label">Valor Abono*</label>
                                     <div className="col-md-12">
                                       <Input
@@ -547,6 +524,27 @@ const IndexPagos = props => {
                                         {validation.touched['pago-valor-pago'] && validation.errors['pago-valor-pago'] && !validation.values['pago-valor-pago'] ? (
                                           <FormFeedback type="invalid">{validation.errors['pago-valor-pago']}</FormFeedback>
                                         ) : null}
+                                    </div>
+                                </Col>
+                                <Col lg={2} md={4} sm={4} >
+
+                                    <label className="col-md-12 col-form-label">Consecutivo *</label>
+                                    <div className="col-md-12">
+                                      <Input
+                                        type="numeric"
+                                        className="form-control"
+                                        name="pago-consecutivo"
+                                        disabled={true}
+                                        value={validation.values['pago-consecutivo'] || ""}
+                                        onChange={validation.handleChange}
+                                        onBlur={validation.handleBlur}
+                                        invalid={
+                                          validation.touched['pago-consecutivo'] && validation.errors['pago-consecutivo'] && !validation.values['pago-consecutivo'] ? true : false
+                                        }
+                                      />
+                                      {validation.touched['pago-consecutivo'] && validation.errors['pago-consecutivo'] && !validation.values['pago-consecutivo'] ? (
+                                        <FormFeedback type="invalid">{validation.errors['pago-consecutivo']}</FormFeedback>
+                                      ) : null}
                                     </div>
                                 </Col>
                               </Row>
@@ -591,7 +589,7 @@ const IndexPagos = props => {
                               <Row>
                                 <Col md={10}>
                                 </Col>
-                                <Col md={2} className="text-end">
+                                <Col md={12} className="text-end">
                                   {
                                     loadingText=="Guardando ..." ?
                                       (
