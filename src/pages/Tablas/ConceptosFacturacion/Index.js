@@ -198,7 +198,7 @@ const IndexConceptosFacturacion = props => {
         return;
       }
       
-      conceptoFacturaValues["intereses"] = intereses.value;
+      conceptoFacturaValues["intereses"] = intereses.value == 'SI' ? 1 : 0;
       
       conceptoFacturaValues["id_cuenta_iva_erp"] = (cuentaIva ? cuentaIva.value : '');
       conceptoFacturaValues["id_cuenta_por_cobrar"] = cuentaXCobrar.value;
