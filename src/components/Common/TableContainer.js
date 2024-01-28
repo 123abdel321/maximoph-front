@@ -297,7 +297,7 @@ const TableContainer = ({
             </Button>
           </div>
         </Col>
-        <Col className="col-md-auto d-none d-md-block text-white">
+        <Col className="col-md-auto d-none d-md-block">
           Página{" "}
           <strong>
             {pageIndex + 1} de {pageOptions.length}

@@ -316,31 +316,35 @@ const IndexAcumulado = props => {
 
           {
             accessModule.INGRESAR==true && !loadingText ?
-            (<TableContainer
-              columns={columns}
-              data={dataFiltered}
-              isGlobalFilter={true}
-              isAddOptions={false}
-              customPageSize={10}
-              totalsFnComponent={(dataF)=>{
-                let total = 0;
-                
-                dataF.map((row)=>{
-                  total += Number(row.original.valor.replaceAll(",",""));
-                });
-
-                total = total.toLocaleString('es-ES');
-
-                return (<tr>
-                  <td><p className="text-center"><b>TOTALES</b></p></td>
-                  <td colspan={5}></td>
-                  <td><p className="text-end" style={{minWidth: '120px'}}><b>$ {total}</b></p></td>
-                  <td></td>
-                </tr>);
-              }}
-              customPageSizeOptions={true}
-              className="custom-header-css"
-          />)
+            (
+              <div className="" style={{borderRadius: 18, backgroundColor: '#FFFFFF', padding: 10}}>
+                <TableContainer
+                  columns={columns}
+                  data={dataFiltered}
+                  isGlobalFilter={true}
+                  isAddOptions={false}
+                  customPageSize={10}
+                  totalsFnComponent={(dataF)=>{
+                    let total = 0;
+                    
+                    dataF.map((row)=>{
+                      total += Number(row.original.valor.replaceAll(",",""));
+                    });
+    
+                    total = total.toLocaleString('es-ES');
+    
+                    return (<tr>
+                      <td><p className="text-center"><b>TOTALES</b></p></td>
+                      <td colspan={5}></td>
+                      <td><p className="text-end" style={{minWidth: '120px'}}><b>$ {total}</b></p></td>
+                      <td></td>
+                    </tr>);
+                  }}
+                  customPageSizeOptions={true}
+                  className="custom-header-css"
+                />
+              </div>
+          )
           :
           (loadingText!="hidden" && loadingText!="" && (<Row>
             <Col xl={12}>

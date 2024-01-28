@@ -306,31 +306,34 @@ const IndexTiposProveedor = props => {
 
           {accessModule.INGRESAR==false&&(<Card><Row><Col xl={12}><p className="text-center"><br /><b>NO TIENES ACCESO A VISUALIZAR TIPOS DE PROVEEDOR</b></p></Col></Row></Card>)}
           
-          {accessModule.CREAR==true && !loadingText && enableForm==false &&(<Card>
+          {accessModule.CREAR==true && !loadingText && enableForm==false &&(
               <Row>
                 <Col xl={3}>
-                  <p className="text-center">
-                    <br />
-                    <Button onClick={()=>setEnableForm(true)} color="primary">
-                      Nuevo tipo de proveedor
-                    </Button>
-                    <br />
-                  </p>
+                  <Button onClick={()=>setEnableForm(true)} color="primary">
+                    <i className="bx bx-folder-plus" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Nuevo tipo de proveedor
+                  </Button>
+                  <br/>
+                  <br/>
                 </Col>
               </Row>
-            </Card>)}
+            )}
 
           {
             accessModule.INGRESAR==true && !loadingGrid && !loadingText && enableForm==false ?
-            (<TableContainer
-              columns={columns}
-              data={dataProviderTypes}
-              isGlobalFilter={true}
-              isAddOptions={false}
-              customPageSize={10}
-              customPageSizeOptions={true}
-              className="custom-header-css"
-          />)
+            (
+              <div className="" style={{borderRadius: 18, backgroundColor: '#FFFFFF', padding: 10}}>
+                <TableContainer
+                  columns={columns}
+                  data={dataProviderTypes}
+                  isGlobalFilter={true}
+                  isAddOptions={false}
+                  customPageSize={10}
+                  customPageSizeOptions={true}
+                  className="custom-header-css"
+                />
+              </div>
+            )
           :
           (<Row>
             <Col xl={12}>

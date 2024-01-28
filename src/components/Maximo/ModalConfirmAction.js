@@ -17,10 +17,10 @@ const ModalConfirmAction = props => {
         {props.buttons}
 
         {props.information ? 
-            (!props.buttons && (<button type="button" className="btn btn-secondary" onClick={()=>props.onClose()}>Ok</button>))
+            (!props.buttons && (<button type="button" className="btn btn-light" onClick={()=>props.onClose()}>Aceptar</button>))
           :
             (<><button type="button" className="btn btn-primary" onClick={()=>props.onYes()}>Si</button>
-             <button type="button" className="btn btn-light" onClick={()=>(props.onNo ? props.onNo() : props.onClose())}>No</button></>)
+             <button type="button" className="btn btn-light" onClick={()=>(props.onNo ? props.onNo() : props.onClose())}>Aceptar</button></>)
         }
       </div>
     </Modal>);

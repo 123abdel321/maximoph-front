@@ -954,89 +954,91 @@ const IndexRecibosCaja = props => {
 
           {accessModule.INGRESAR==false&&(<Card><Row><Col xl={12}><p className="text-center"><br /><b>NO TIENES ACCESO A VISUALIZAR RECIBOS DE CAJA</b></p></Col></Row></Card>)}
           
-          {accessModule.CREAR==true && !loadingText && enableForm==false &&(<Card>
+          {accessModule.CREAR==true && !loadingText && enableForm==false &&(
               <Row>
                 <Col xl={3}>
-                  <p className="text-center">
-                    <br />
-                    <Button onClick={()=>setEnableForm(true)} color="primary">
-                      Nuevo recibo de caja
-                    </Button>
-                    <br />
-                  </p>
+                  <Button onClick={()=>setEnableForm(true)} color="primary">
+                    <i className="bx bx-folder-plus" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Nuevo recibo de caja
+                  </Button>
+                  <br/>
+                  <br/>
                 </Col>
+                
               </Row>
-            </Card>)}
+            )}
 
           {
             accessModule.INGRESAR==true && !loadingText && enableForm==false ?
             (<>
               {/*TABS*/}
-              <Nav pills className="navtab-bg nav-justified">
-                <NavItem>
-                  <NavLink
-                    style={{ cursor: "pointer" }}
-                    className={classnames({
-                      active: activeTab === "1",
-                    })}
-                    onClick={() => {
-                      toggleTab("1");
-                    }}
-                  >
-                    Recibos de Caja
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    style={{ cursor: "pointer" }}
-                    className={classnames({
-                      active: activeTab === "2",
-                    })}
-                    onClick={() => {
-                      toggleTab("2");
-                    }}
-                  >
-                    Comprobantes de Pago
-                  </NavLink>
-                </NavItem>
-              </Nav>
-              {/*TABS*/}
+              <div className="" style={{borderRadius: 18, backgroundColor: '#FFFFFF', padding: 10}}>
+                <Nav pills className="navtab-bg nav-justified">
+                  <NavItem>
+                    <NavLink
+                      style={{ cursor: "pointer" }}
+                      className={classnames({
+                        active: activeTab === "1",
+                      })}
+                      onClick={() => {
+                        toggleTab("1");
+                      }}
+                    >
+                      Recibos de Caja
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      style={{ cursor: "pointer" }}
+                      className={classnames({
+                        active: activeTab === "2",
+                      })}
+                      onClick={() => {
+                        toggleTab("2");
+                      }}
+                    >
+                      Comprobantes de Pago
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+                {/*TABS*/}
 
-              {/*CONTAINER TABS*/}
-              <TabContent activeTab={activeTab} className="p-3 text-muted tab-panel-container-custom">
-                <TabPane tabId="1">
-                  <Row>
-                    <Col sm="12">
-                      <br />
-                      <TableContainer
-                        columns={columns}
-                        data={data}
-                        isGlobalFilter={true}
-                        isAddOptions={false}
-                        customPageSize={10}
-                        customPageSizeOptions={true}
-                        className="custom-header-css"
-                      />
-                    </Col>
-                  </Row>
-                </TabPane>
-                <TabPane tabId="2">
-                  <Row>
-                    <Col sm="12">
-                      <br />
-                      <TableContainer
-                          columns={columnsComprobantes}
-                          data={billCashVouchers}
+                {/*CONTAINER TABS*/}
+                <TabContent activeTab={activeTab} className="p-3 text-muted tab-panel-container-custom">
+                  <TabPane tabId="1">
+                    <Row>
+                      <Col sm="12">
+                        <br />
+                        <TableContainer
+                          columns={columns}
+                          data={data}
                           isGlobalFilter={true}
                           isAddOptions={false}
                           customPageSize={10}
                           customPageSizeOptions={true}
                           className="custom-header-css"
-                      />
-                    </Col>
-                  </Row>
-                </TabPane>
-              </TabContent>
+                        />
+                      </Col>
+                    </Row>
+                  </TabPane>
+                  <TabPane tabId="2">
+                    <Row>
+                      <Col sm="12">
+                        <br />
+                        <TableContainer
+                            columns={columnsComprobantes}
+                            data={billCashVouchers}
+                            isGlobalFilter={true}
+                            isAddOptions={false}
+                            customPageSize={10}
+                            customPageSizeOptions={true}
+                            className="custom-header-css"
+                        />
+                      </Col>
+                    </Row>
+                  </TabPane>
+                </TabContent>
+              </div>
             </>)
           :
           (loadingText!="hidden" && loadingText!="" && (<Row>

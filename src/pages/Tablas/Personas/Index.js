@@ -718,53 +718,50 @@ const IndexPersonas = props => {
 
             {accessModule.CREAR==false&&(<Card><Row><Col xl={12}><p className="text-center"><br /><b>NO TIENES ACCESO A CREAR PERSONAS</b></p></Col></Row></Card>)}
             
-            {accessModule.CREAR==true&&loadingFile==false&& !loadingText && enableForm==false &&(<Card>
+            {accessModule.CREAR==true&&loadingFile==false&& !loadingText && enableForm==false &&(
               <Row>
                 <Col xl={4}>
-                  <p className="text-center">
-                    <br />
-                    <Button onClick={()=>setEnableForm(true)} color="primary">
-                      Nueva persona
-                    </Button>
-                    <br />
-                  </p>
+                  <Button onClick={()=>setEnableForm(true)} color="primary">
+                    <i className="bx bx-folder-plus" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Nueva persona
+                  </Button>
                 </Col>
                 <Col xl={8}>
-                  <p className="text-center">
-                    <br />
-                      <ButtonDropdown isOpen={dropdowmImporterPersons} toggle={() => setDropdowmImporterPersons(!dropdowmImporterPersons)}>
-                        <DropdownToggle
-                          caret
-                          color="primary"
-                          className="btn btn-info"
-                        >
-                          Importador Personas
-                        </DropdownToggle>
-                        <DropdownMenu>
-                          <DropdownItem onClick={()=>downloadCSVImporter('personas')}>
-                            <Button color={'info'} className="btn-m"> 
-                              <i className="bx bx-download font-size-14 align-middle me-2"></i>
-                              {'Descargar Plantilla Personas'}
+                  <ButtonDropdown isOpen={dropdowmImporterPersons} toggle={() => setDropdowmImporterPersons(!dropdowmImporterPersons)}>
+                    <DropdownToggle
+                      caret
+                      color="primary"
+                      className="btn btn-info"
+                    >
+                      <i className="bx bx-import" style={{ fontSize: '18px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Importador Personas
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem onClick={()=>downloadCSVImporter('personas')}>
+                        <Button color={'info'} className="btn-m"> 
+                          <i className="bx bx-download font-size-14 align-middle me-2"></i>
+                          {'Descargar Plantilla Personas'}
+                        </Button>
+                      </DropdownItem>
+                      <DropdownItem>
+                        <Dropzone onDrop={csvFile => {uploadCSVImporter(csvFile, 'personas')}} >
+                          {({ getRootProps, getInputProps }) => (
+                            <Button color={'primary'} {...getRootProps()} className="btn-m"> 
+                              <input {...getInputProps()} />
+                              <i className="bx bx-upload font-size-14 align-middle me-2"></i>
+                              {'Importar Personas'}
                             </Button>
-                          </DropdownItem>
-                          <DropdownItem>
-                            <Dropzone onDrop={csvFile => {uploadCSVImporter(csvFile, 'personas')}} >
-                              {({ getRootProps, getInputProps }) => (
-                                <Button color={'primary'} {...getRootProps()} className="btn-m"> 
-                                  <input {...getInputProps()} />
-                                  <i className="bx bx-upload font-size-14 align-middle me-2"></i>
-                                  {'Importar Personas'}
-                                </Button>
-                              )}
-                            </Dropzone>
-                          </DropdownItem>
-                        </DropdownMenu>
-                      </ButtonDropdown>
-                    <br />
-                  </p>
+                          )}
+                        </Dropzone>
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </ButtonDropdown>
                 </Col>
+                <br/>
+                <br/>
+                <br/>
               </Row>
-            </Card>)}
+            )}
 
             {accessModule.CREAR==true&&loadingFile!=false&&(<Card>
               <Row>
@@ -781,15 +778,19 @@ const IndexPersonas = props => {
             
             {
               accessModule.INGRESAR==true && !loadingGrid && !loadingText && enableForm==false ?
-              (<TableContainer
-                  columns={columns}
-                  data={dataPersons}
-                  isGlobalFilter={true}
-                  isAddOptions={false}
-                  customPageSize={10}
-                  customPageSizeOptions={true}
-                  className="custom-header-css"
-              />)
+              (
+                <div className="" style={{borderRadius: 18, backgroundColor: '#FFFFFF', padding: 10}}>
+                  <TableContainer
+                      columns={columns}
+                      data={dataPersons}
+                      isGlobalFilter={true}
+                      isAddOptions={false}
+                      customPageSize={10}
+                      customPageSizeOptions={true}
+                      className="custom-header-css"
+                  />
+                </div>
+              )
             :
             (loadingText!="hidden" && loadingText!="" && (<Row>
               <Col xl={12}>

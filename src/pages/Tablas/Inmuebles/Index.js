@@ -141,7 +141,7 @@ const IndexInmuebles = props => {
 
   const InmuebleTotales = ()=>{
     return (<Row>
-      <Col lg={3}>
+      <Col lg={4} md={6} sm={12}>
         <Card className="mini-stats-wid">
           <CardBody>
             <div className="d-flex flex-wrap">
@@ -160,7 +160,7 @@ const IndexInmuebles = props => {
         </Card>
       </Col>
 
-      <Col lg={3}>
+      <Col lg={4} md={6} sm={12}>
         <Card className="blog-stats-wid">
           <CardBody>
             <div className="d-flex flex-wrap">
@@ -179,7 +179,7 @@ const IndexInmuebles = props => {
         </Card>
       </Col>
 
-      <Col lg={3}>
+      <Col lg={4} md={6} sm={12}>
         <Card className="blog-stats-wid">
           <CardBody>
             <div className="d-flex flex-wrap">
@@ -198,7 +198,7 @@ const IndexInmuebles = props => {
         </Card>
       </Col>
 
-      <Col lg={3}>
+      <Col lg={4} md={6} sm={12}>
         <Card className="blog-stats-wid">
           <CardBody>
             <div className="d-flex flex-wrap">
@@ -1002,87 +1002,81 @@ const IndexInmuebles = props => {
 
           {accessModule.CREAR==false&&(<Card><Row><Col xl={12}><p className="text-center"><br /><b>NO TIENES ACCESO A CREAR INMUEBLES</b></p></Col></Row></Card>)}
           
-          {accessModule.CREAR==true&&loadingFile==false&& !loadingText && enableForm==false &&(<Card>
+          {accessModule.CREAR==true&&loadingFile==false&& !loadingText && enableForm==false &&(
             <Row>
               <Col xl={4}>
-                <p className="text-center">
-                  <br />
-                  <Button onClick={()=>setEnableForm(true)} color="primary">
-                    Nuevo Inmueble
-                  </Button>
-                  <br />
-                </p>
+                <Button onClick={()=>setEnableForm(true)} color="primary">
+                  <i className="bx bx-folder-plus" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Nuevo Inmueble
+                </Button>
               </Col>
               <Col xl={4}>
-                <p className="text-center">
-                  <br />
-                    <ButtonDropdown isOpen={dropdowmImporterProperties} toggle={() => setDropdowmImporterProperties(!dropdowmImporterProperties)}>
-                      <DropdownToggle
-                        caret
-                        color="primary"
-                        className="btn btn-info"
-                      >
-                        Importador Inmuebles
-                      </DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem onClick={()=>downloadCSVImporter('inmuebles')}>
-                          <Button color={'info'} className="btn-m"> 
-                            <i className="bx bx-download font-size-14 align-middle me-2"></i>
-                            {'Descargar Plantilla Inmuebles'}
+                <ButtonDropdown isOpen={dropdowmImporterProperties} toggle={() => setDropdowmImporterProperties(!dropdowmImporterProperties)}>
+                  <DropdownToggle
+                    caret
+                    color="primary"
+                    className="btn btn-info"
+                  >
+                    <i className="bx bx-import" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Importador Inmuebles
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem onClick={()=>downloadCSVImporter('inmuebles')}>
+                      <Button color={'info'} className="btn-m"> 
+                        <i className="bx bx-download font-size-14 align-middle me-2"></i>
+                        {'Descargar Plantilla Inmuebles'}
+                      </Button>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Dropzone onDrop={csvFile => {uploadCSVImporter(csvFile, 'inmuebles')}} >
+                        {({ getRootProps, getInputProps }) => (
+                          <Button color={'primary'} {...getRootProps()} className="btn-m"> 
+                            <input {...getInputProps()} />
+                            <i className="bx bx-upload font-size-14 align-middle me-2"></i>
+                            {'Importar Inmuebles'}
                           </Button>
-                        </DropdownItem>
-                        <DropdownItem>
-                          <Dropzone onDrop={csvFile => {uploadCSVImporter(csvFile, 'inmuebles')}} >
-                            {({ getRootProps, getInputProps }) => (
-                              <Button color={'primary'} {...getRootProps()} className="btn-m"> 
-                                <input {...getInputProps()} />
-                                <i className="bx bx-upload font-size-14 align-middle me-2"></i>
-                                {'Importar Inmuebles'}
-                              </Button>
-                            )}
-                          </Dropzone>
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </ButtonDropdown>
-                  <br />
-                </p>
+                        )}
+                      </Dropzone>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </ButtonDropdown>
               </Col>
               <Col xl={4}>
-                <p className="text-center">
-                  <br />
-                    <ButtonDropdown isOpen={dropdowmImporterPersons} toggle={() => setDropdowmImporterPersons(!dropdowmImporterPersons)}>
-                      <DropdownToggle
-                        caret
-                        color="primary"
-                        className="btn btn-info"
-                      >
-                        Importador Inquilinos/Propietarios
-                      </DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem onClick={()=>downloadCSVImporter('inmuebles-admon')}>
-                          <Button color={'info'} className="btn-m"> 
-                            <i className="bx bx-download font-size-14 align-middle me-2"></i>
-                            {'Descargar Plantilla Inquilinos/Propietarios'}
+                <ButtonDropdown isOpen={dropdowmImporterPersons} toggle={() => setDropdowmImporterPersons(!dropdowmImporterPersons)}>
+                  <DropdownToggle
+                    caret
+                    color="primary"
+                    className="btn btn-info"
+                  >
+                    <i className="bx bx-import" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Importador Inquilinos/Propietarios
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem onClick={()=>downloadCSVImporter('inmuebles-admon')}>
+                      <Button color={'info'} className="btn-m"> 
+                        <i className="bx bx-download font-size-14 align-middle me-2"></i>
+                        {'Descargar Plantilla Inquilinos/Propietarios'}
+                      </Button>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Dropzone onDrop={csvFile => {uploadCSVImporter(csvFile, 'inmuebles-admon')}} >
+                        {({ getRootProps, getInputProps }) => (
+                          <Button color={'primary'} {...getRootProps()} className="btn-m"> 
+                            <input {...getInputProps()} />
+                            <i className="bx bx-upload font-size-14 align-middle me-2"></i>
+                            {'Importar Inquilinos/Propietarios'}
                           </Button>
-                        </DropdownItem>
-                        <DropdownItem>
-                          <Dropzone onDrop={csvFile => {uploadCSVImporter(csvFile, 'inmuebles-admon')}} >
-                            {({ getRootProps, getInputProps }) => (
-                              <Button color={'primary'} {...getRootProps()} className="btn-m"> 
-                                <input {...getInputProps()} />
-                                <i className="bx bx-upload font-size-14 align-middle me-2"></i>
-                                {'Importar Inquilinos/Propietarios'}
-                              </Button>
-                            )}
-                          </Dropzone>
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </ButtonDropdown>
-                  <br />
-                </p>
+                        )}
+                      </Dropzone>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </ButtonDropdown>
               </Col>
+              <br/>
+              <br/>
+              <br/>
             </Row>
-          </Card>)}
+          )}
 
           {accessModule.CREAR==true&&loadingFile!=false&&(<Card>
             <Row>
@@ -1100,95 +1094,97 @@ const IndexInmuebles = props => {
           {
             accessModule.INGRESAR==true && !loadingGrid && !loadingText && enableForm==false ?
             (<>
-              {/*TABS*/}
-              <Nav pills className="navtab-bg nav-justified">
-                <NavItem>
-                  <NavLink
-                    style={{ cursor: "pointer" }}
-                    className={classnames({
-                      active: activeTab === "1",
-                    })}
-                    onClick={() => {
-                      toggleTab("1");
-                    }}
-                  >
-                    Inmuebles
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    style={{ cursor: "pointer" }}
-                    className={classnames({
-                      active: activeTab === "2",
-                    })}
-                    onClick={() => {
-                      toggleTab("2");
-                    }}
-                  >
-                    Todas las mascotas
-                  </NavLink>
-                </NavItem>
-              </Nav>
-              {/*TABS*/}
+              <div className="" style={{borderRadius: 18, backgroundColor: '#FFFFFF', padding: 10}}>
+                {/*TABS*/}
+                <Nav pills className="navtab-bg nav-justified">
+                  <NavItem>
+                    <NavLink
+                      style={{ cursor: "pointer" }}
+                      className={classnames({
+                        active: activeTab === "1",
+                      })}
+                      onClick={() => {
+                        toggleTab("1");
+                      }}
+                    >
+                      Inmuebles
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      style={{ cursor: "pointer" }}
+                      className={classnames({
+                        active: activeTab === "2",
+                      })}
+                      onClick={() => {
+                        toggleTab("2");
+                      }}
+                    >
+                      Todas las mascotas
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+                {/*TABS*/}
 
-              {/*CONTAINER TABS*/}
-              <TabContent activeTab={activeTab} className="p-3 text-muted tab-panel-container-custom">
-                <TabPane tabId="1">
-                  <br />
-                  <TableContainer
-                    columns={columns}
-                    totalsFnComponent={(dataF)=>{
-                      let area = 0;
-                      let coeficiente = 0;
-                      let valorAdmon = 0;
-                      
-                      dataF.map((row)=>{
-                        area += Number(row.original.area);
-                        coeficiente += Number(row.original.coeficiente);
-                        valorAdmon += Number(row.original.valor_total_administracion);
-                      });
+                {/*CONTAINER TABS*/}
+                <TabContent activeTab={activeTab} className="p-3 text-muted tab-panel-container-custom">
+                  <TabPane tabId="1">
+                    <br />
+                    <TableContainer
+                      columns={columns}
+                      totalsFnComponent={(dataF)=>{
+                        let area = 0;
+                        let coeficiente = 0;
+                        let valorAdmon = 0;
+                        
+                        dataF.map((row)=>{
+                          area += Number(row.original.area);
+                          coeficiente += Number(row.original.coeficiente);
+                          valorAdmon += Number(row.original.valor_total_administracion);
+                        });
 
-                      area = area.toFixed(2).toLocaleString('es-ES');
-                      coeficiente = (coeficiente*100).toFixed(2).toLocaleString('es-ES');
-                      valorAdmon = valorAdmon.toLocaleString('es-ES');
+                        area = area.toFixed(2).toLocaleString('es-ES');
+                        coeficiente = (coeficiente*100).toFixed(2).toLocaleString('es-ES');
+                        valorAdmon = valorAdmon.toLocaleString('es-ES');
 
-                      return (<tr>
-                        <td><p className="text-center"><b>TOTALES</b></p></td>
-                        <td colspan={3}></td>
-                        <td><p className="text-end"><b>{Number(area).toLocaleString()}</b></p></td>
-                        <td><p className="text-end"><b>{Number(coeficiente)} %</b></p></td>
-                        <td><p className="text-end"><b>$ {valorAdmon}</b></p></td>
-                        <td colspan={2}></td>
-                      </tr>);
-                    }}
-                    customPageSizeOptions={true}
-                    data={dataProperties}
-                    isGlobalFilter={true}
-                    isAddOptions={false}
-                    customPageSize={10}
-                    className="custom-header-css"
-                  />
-                  <br />
-                  <InmuebleTotales />
-                  <br />
-                </TabPane>
-                <TabPane tabId="2">
-                  <Row>
-                    <Col sm="12">
-                      <br />
-                      <br />
-                      <TableContainer
-                        columns={columnsMascotas}
-                        data={dataPropertyPetsAll}
-                        isGlobalFilter={true}
-                        isAddOptions={false}
-                        customPageSize={1000}
-                        className="custom-header-css"
-                      />
-                    </Col>
-                  </Row>
-                </TabPane>
-              </TabContent>
+                        return (<tr>
+                          <td><p className="text-center"><b>TOTALES</b></p></td>
+                          <td colspan={3}></td>
+                          <td><p className="text-end"><b>{Number(area).toLocaleString()}</b></p></td>
+                          <td><p className="text-end"><b>{Number(coeficiente)} %</b></p></td>
+                          <td><p className="text-end"><b>$ {valorAdmon}</b></p></td>
+                          <td colspan={2}></td>
+                        </tr>);
+                      }}
+                      customPageSizeOptions={true}
+                      data={dataProperties}
+                      isGlobalFilter={true}
+                      isAddOptions={false}
+                      customPageSize={10}
+                      className="custom-header-css"
+                    />
+                  </TabPane>
+                  <TabPane tabId="2">
+                    <Row>
+                      <Col sm="12">
+                        <br />
+                        <br />
+                        <TableContainer
+                          columns={columnsMascotas}
+                          data={dataPropertyPetsAll}
+                          isGlobalFilter={true}
+                          isAddOptions={false}
+                          customPageSize={1000}
+                          className="custom-header-css"
+                        />
+                      </Col>
+                    </Row>
+                  </TabPane>
+                </TabContent>
+              </div>
+              <br />
+              <InmuebleTotales />
+              <br />
             </>)
           :
             (<Row>

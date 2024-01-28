@@ -557,7 +557,7 @@ const IndexFacturacionCiclica = props => {
 
   const FacturacionCiclicaTotales = ()=>{
     return (<Row>
-      <Col lg={3}>
+      <Col lg={4}>
         <Card className="mini-stats-wid">
           <CardBody>
             <div className="d-flex flex-wrap">
@@ -576,7 +576,7 @@ const IndexFacturacionCiclica = props => {
         </Card>
       </Col>
 
-      <Col lg={3}>
+      <Col lg={4}>
         <Card className="blog-stats-wid">
           <CardBody>
             <div className="d-flex flex-wrap">
@@ -595,7 +595,7 @@ const IndexFacturacionCiclica = props => {
         </Card>
       </Col>
 
-      <Col lg={3}>
+      <Col lg={4}>
         <Card className="blog-stats-wid">
           <CardBody>
             <div className="d-flex flex-wrap">
@@ -614,7 +614,7 @@ const IndexFacturacionCiclica = props => {
         </Card>
       </Col>
 
-      <Col lg={3}>
+      <Col lg={4}>
         <Card className="blog-stats-wid">
           <CardBody>
             <div className="d-flex flex-wrap">
@@ -627,7 +627,7 @@ const IndexFacturacionCiclica = props => {
         </Card>
       </Col>
       
-      {cyclicalBillsTotals.concepts.map((concept, index)=>(<Col lg={3} key={index}>
+      {cyclicalBillsTotals.concepts.map((concept, index)=>(<Col lg={4} key={index}>
             <Card className="blog-stats-wid">
               <CardBody>
                 <div className="d-flex flex-wrap">
@@ -877,146 +877,138 @@ const IndexFacturacionCiclica = props => {
 
           {accessModule.INGRESAR==false&&(<Card><Row><Col xl={12}><p className="text-center"><br /><b>NO TIENES ACCESO A VISUALIZAR CONCEPTOS INMUEBLES</b></p></Col></Row></Card>)}
           
-          {accessModule.CREAR==true && !loadingText && enableForm==false &&(<Card>
+          {accessModule.CREAR==true && !loadingText && enableForm==false &&(
               <Row>
-                <Col xl={3}>
-                  <p className="text-center">
-                    <br />
-                    <Button onClick={()=>setEnableForm(true)} color="primary">
-                      Nuevo concepto de inmueble
-                    </Button>
-                    <br />
-                  </p>
+                <Col xl={4}>
+                  <Button onClick={()=>setEnableForm(true)} color="primary">
+                    <i className="bx bx-folder-plus" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Nuevo concepto de inmueble
+                  </Button>
                 </Col>
                 <Col xl={4}>
-                  <p className="text-center">
-                    <br />
-                    <Button color={classCreateBtn} onClick={()=>{ 
-                      if(accessModule.CREAR==true){
-                        if(strictedValidation==0||strictedValidation==false){
-                          setNuevoConceptoMasivoFacturacion(true); 
-                        }else{
-                          let errors = [];
+                  <Button color={classCreateBtn} onClick={()=>{ 
+                    if(accessModule.CREAR==true){
+                      if(strictedValidation==0||strictedValidation==false){
+                        setNuevoConceptoMasivoFacturacion(true); 
+                      }else{
+                        let errors = [];
 
-                          if(Number(cyclicalBillsTotals.unidades_ingresadas)!=Number(cyclicalBillsTotals.unidades_entorno)){
-                            errors.push(`Inmuebles con Factura Incompletos: ${Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de ${Number(cyclicalBillsTotals.unidades_entorno).toLocaleString()}`);
-                          }
-                          
-                          if(Number(cyclicalBillsTotals.coeficiente_ingresado)!=Number(cyclicalBillsTotals.coeficiente_entorno)){
-                            errors.push(`Coeficiente total incompleto: ${Number(cyclicalBillsTotals.coeficiente_ingresado).toLocaleString()} de % ${Number(cyclicalBillsTotals.coeficiente_entorno).toLocaleString()}`);
-                          }
-
-                          if(Number(cyclicalBillsTotals.valor_total_administracion)!=Number(cyclicalBillsTotals.ppto_entorno)){
-                            errors.push(`Valor administración incompleto: $ ${Number(cyclicalBillsTotals.valor_total_administracion).toLocaleString()} de $ ${Number(cyclicalBillsTotals.ppto_entorno).toLocaleString()}`);
-                          }
-                  
-                          if(cyclicalBillsTotals.unidades_admon_diff){
-                            errors.push(`Unidades con % Administración diferente de 100 : ${cyclicalBillsTotals.unidades_admon_diff}`);
-                          }
-
-                          if(errors.length==0){
-                            setNuevoConceptoMasivoFacturacion(true);
-                          }else{
-                            setErrorValidacionEstricta(errors);
-                          }
+                        if(Number(cyclicalBillsTotals.unidades_ingresadas)!=Number(cyclicalBillsTotals.unidades_entorno)){
+                          errors.push(`Inmuebles con Factura Incompletos: ${Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de ${Number(cyclicalBillsTotals.unidades_entorno).toLocaleString()}`);
                         }
+                        
+                        if(Number(cyclicalBillsTotals.coeficiente_ingresado)!=Number(cyclicalBillsTotals.coeficiente_entorno)){
+                          errors.push(`Coeficiente total incompleto: ${Number(cyclicalBillsTotals.coeficiente_ingresado).toLocaleString()} de % ${Number(cyclicalBillsTotals.coeficiente_entorno).toLocaleString()}`);
+                        }
+
+                        if(Number(cyclicalBillsTotals.valor_total_administracion)!=Number(cyclicalBillsTotals.ppto_entorno)){
+                          errors.push(`Valor administración incompleto: $ ${Number(cyclicalBillsTotals.valor_total_administracion).toLocaleString()} de $ ${Number(cyclicalBillsTotals.ppto_entorno).toLocaleString()}`);
+                        }
+                
+                        if(cyclicalBillsTotals.unidades_admon_diff){
+                          errors.push(`Unidades con % Administración diferente de 100 : ${cyclicalBillsTotals.unidades_admon_diff}`);
+                        }
+
+                        if(errors.length==0){
+                          setNuevoConceptoMasivoFacturacion(true);
+                        }else{
+                          setErrorValidacionEstricta(errors);
+                        }
+                      }
                       }else{
                         toastr.options = { positionClass: 'toast-top-right' };
                         toastr.warning("No tienes acceso a crear Conceptos de Inmuebles", "Permisos");
                       }
                     }}>
-                      Asociar concepto masivamente
-                    </Button>
-                    <br />
-                  </p>
+                    <i className="bx bx-add-to-queue" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Asociar concepto masivamente
+                  </Button>
                 </Col>
                 <Col xl={4}>
-                  <p className="text-center">
-                    <br />
-                    <Col md={12}>
-                      {
-                        loadingText=="Guardando ..." ?
-                          (<></>)
-                        :
-                          (<>
-                            
-                            {" "}
-                            {<Button color={classDeleteBtn} onClick={()=>{ 
-                              if(accessModule.ELIMINAR==true){
-                                setEliminarConceptoMasivoFacturacion(true); 
-                              }else{
-                                toastr.options = { positionClass: 'toast-top-right' };
-                                toastr.warning("No tienes acceso a eliminar Conceptos de Inmuebles", "Permisos");
-                              }
-                            }}>
-                              Eliminar concepto masivamente
-                          </Button>}
-                          </>)
-                      }
-                    </Col>
-                    <br />
-                  </p>
+                  {loadingText=="Guardando ..." ?
+                    (<></>)
+                  :
+                    (<>
+                      
+                      {" "}
+                      {<Button color={classDeleteBtn} onClick={()=>{ 
+                        if(accessModule.ELIMINAR==true){
+                          setEliminarConceptoMasivoFacturacion(true); 
+                        }else{
+                          toastr.options = { positionClass: 'toast-top-right' };
+                          toastr.warning("No tienes acceso a eliminar Conceptos de Inmuebles", "Permisos");
+                        }
+                      }}>
+                        <i className="bx bx-trash" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Eliminar concepto masivamente
+                    </Button>}
+                    </>)}
                 </Col>
+                <br/>
+                <br/>
+                <br/>
               </Row>
-            </Card>)}
+            )}
 
           {
             accessModule.INGRESAR==true && !loadingGrid && !loadingText && enableForm==false ?
             (<>
-              <Row>
-                <Col md={6}>
-                  <div className="form-check form-switch form-switch-lg mb-3">
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      name="mostrar-solo-conceptos-base"
-                      defaultChecked={showBaseConcept}
-                      onChange={(e)=>{
-                        setShowBaseConcept(e.target.checked?true:false);
-                        loadFacturasCiclicas((e.target.checked?true:false));
-                      }}
-                    />
-                    <label className="form-check-label text-white" htmlFor="customSwitchsizelg">
-                      Mostrar concepto base de administración
-                    </label>
-                  </div>
-                </Col>
-              </Row>
-              <TableContainer
-                  columns={columns}
-                  totalsFnComponent={(dataF)=>{
-                    let area = 0;
-                    let coeficiente = 0;
-                    let valorAdmon = 0;
-                    
-                    if(dataF.length){
-                      dataF.map((row)=>{
-                        area += Number(row.original.areaText);
-                        coeficiente += Number(row.original.coeficiente);
-                        valorAdmon += Number(row.original.valor_total_sum);
-                      });
+              <div className="" style={{borderRadius: 18, backgroundColor: '#FFFFFF', padding: 10}}> 
+                <Row>
+                  <Col md={6}>
+                    <div className="form-check form-switch form-switch-lg mb-3">
+                      <input
+                        type="checkbox"
+                        className="form-check-input"
+                        name="mostrar-solo-conceptos-base"
+                        defaultChecked={showBaseConcept}
+                        onChange={(e)=>{
+                          setShowBaseConcept(e.target.checked?true:false);
+                          loadFacturasCiclicas((e.target.checked?true:false));
+                        }}
+                      />
+                      <label className="form-check-label" htmlFor="customSwitchsizelg">
+                        Mostrar concepto base de administración
+                      </label>
+                    </div>
+                  </Col>
+                </Row>
+                <TableContainer
+                    columns={columns}
+                    totalsFnComponent={(dataF)=>{
+                      let area = 0;
+                      let coeficiente = 0;
+                      let valorAdmon = 0;
+                      
+                      if(dataF.length){
+                        dataF.map((row)=>{
+                          area += Number(row.original.areaText);
+                          coeficiente += Number(row.original.coeficiente);
+                          valorAdmon += Number(row.original.valor_total_sum);
+                        });
 
-                      area = area.toFixed(2).toLocaleString('es-ES');
-                      coeficiente = (coeficiente*100).toFixed(2).toLocaleString('es-ES');
-                      valorAdmon = valorAdmon.toLocaleString('es-ES');
-                    }
+                        area = area.toFixed(2).toLocaleString('es-ES');
+                        coeficiente = (coeficiente*100).toFixed(2).toLocaleString('es-ES');
+                        valorAdmon = valorAdmon.toLocaleString('es-ES');
+                      }
 
-                    return (<tr>
-                      <td><p className="text-center"><b>TOTALES</b></p></td>
-                      <td colspan={8}></td>
-                      <td><p className="text-end"><b>{Number(area).toLocaleString()}</b></p></td>
-                      <td><p className="text-end"><b>{Number(coeficiente)} %</b></p></td>
-                      <td><p className="text-end" style={{minWidth: '110px'}}><b>$ {valorAdmon}</b></p></td>
-                      <td></td>
-                    </tr>);
-                  }}
-                  data={dataCyclicalBillsFilter}
-                  isGlobalFilter={true}
-                  isAddOptions={false}
-                  customPageSize={10}
-                  customPageSizeOptions={true}
-                  className="custom-header-css"
-              />
+                      return (<tr>
+                        <td><p className="text-center"><b>TOTALES</b></p></td>
+                        <td colspan={8}></td>
+                        <td><p className="text-end"><b>{Number(area).toLocaleString()}</b></p></td>
+                        <td><p className="text-end"><b>{Number(coeficiente)} %</b></p></td>
+                        <td><p className="text-end" style={{minWidth: '110px'}}><b>$ {valorAdmon}</b></p></td>
+                        <td></td>
+                      </tr>);
+                    }}
+                    data={dataCyclicalBillsFilter}
+                    isGlobalFilter={true}
+                    isAddOptions={false}
+                    customPageSize={10}
+                    customPageSizeOptions={true}
+                    className="custom-header-css"
+                />
+              </div>
               <br />
               <FacturacionCiclicaTotales />
             </>)

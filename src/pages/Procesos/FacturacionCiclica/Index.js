@@ -271,7 +271,7 @@ const IndexFacturacionCiclica = props => {
                 <div className="d-flex flex-wrap">
                   <div className="me-3">
                     <b className="text-muted mb-2">Inmuebles con Factura</b>
-                    <h5 className="mb-0">{Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de { cyclicalBillsTotals.unidades_ingresadas ? Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString() : 0}</h5>
+                    <h5 className="mb-0">{Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de { cyclicalBillsTotals.numero_unidades ? Number(cyclicalBillsTotals.numero_unidades).toLocaleString() : 0}</h5>
                   </div>
 
                   <div className="avatar-sm ms-auto">
@@ -360,12 +360,7 @@ const IndexFacturacionCiclica = props => {
             </Card>
           </Col>
 
-        </Row>
-      </Col>
-
-      <Col lg={12} >
-        <Row>
-          {cyclicalBillsTotals.concepts.map((concept, index)=>(<Col lg={3} key={index}>
+          {cyclicalBillsTotals.concepts.map((concept, index)=>(<Col lg={4} key={index}>
             <Card className="blog-stats-wid">
               <CardBody>
                 <div className="d-flex flex-wrap">
@@ -383,6 +378,13 @@ const IndexFacturacionCiclica = props => {
               </CardBody>
             </Card>
           </Col>))}
+
+        </Row>
+      </Col>
+
+      <Col lg={12} >
+        <Row>
+          
         </Row>
       </Col>
     </Row>);
@@ -494,7 +496,7 @@ const IndexFacturacionCiclica = props => {
                                       let errors = [];
 
                                       if(Number(cyclicalBillsTotals.unidades_ingresadas)!=Number(cyclicalBillsTotals.unidades_entorno)){
-                                        errors.push(`Inmuebles con Factura Registradas: ${Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de ${cyclicalBillsTotals.unidades_entorno}`);
+                                        errors.push(`Inmuebles con Factura Registradas: ${Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de ${cyclicalBillsTotals.numero_unidades}`);
                                       }
                                       
                                       if(Number(cyclicalBillsTotals.coeficiente_ingresado)!=Number(cyclicalBillsTotals.coeficiente_entorno)){
@@ -517,32 +519,32 @@ const IndexFacturacionCiclica = props => {
                                     }}>
                                       PRESIONE CLICK PARA GENERAR ESTE LOTE DE FACTURACIÓN {currentPeriod}
                                     </Button>
+                                    <br />
+                                    <TableContainer
+                                      columns={columnsPrevio}
+                                      data={data}
+                                      totalsFnComponent={(dataF)=>{
+                                        let valorAdmon = 0;
+                                        
+                                        dataF.map((row)=>{
+                                          valorAdmon += Number(row.original.valor_total_sum);
+                                        });
+                                        valorAdmon = valorAdmon.toLocaleString('es-ES');
+
+                                        return (<tr>
+                                          <td><p className="text-center"><b>TOTALES</b></p></td>
+                                          <td colspan={6  }></td>
+                                          <td><p className="text-end" style={{minWidth: '110px'}}><b>$ {valorAdmon}</b></p></td>
+                                        </tr>);
+                                      }}
+                                      isGlobalFilter={true}
+                                      isAddOptions={false}
+                                      customPageSize={10}
+                                      customPageSizeOptions={true}
+                                      className="custom-header-css"
+                                    />
                                   </div>
 
-                                  <br />
-                                  <TableContainer
-                                    columns={columnsPrevio}
-                                    data={data}
-                                    totalsFnComponent={(dataF)=>{
-                                      let valorAdmon = 0;
-                                      
-                                      dataF.map((row)=>{
-                                        valorAdmon += Number(row.original.valor_total_sum);
-                                      });
-                                      valorAdmon = valorAdmon.toLocaleString('es-ES');
-
-                                      return (<tr>
-                                        <td><p className="text-center"><b>TOTALES</b></p></td>
-                                        <td colspan={6  }></td>
-                                        <td><p className="text-end" style={{minWidth: '110px'}}><b>$ {valorAdmon}</b></p></td>
-                                      </tr>);
-                                    }}
-                                    isGlobalFilter={true}
-                                    isAddOptions={false}
-                                    customPageSize={10}
-                                    customPageSizeOptions={true}
-                                    className="custom-header-css"
-                                  />
                               </Col>
                             </Row>
                           </TabPane>
@@ -807,7 +809,7 @@ const IndexFacturacionCiclica = props => {
       {/*MODAL ANULAR CUENTAS DE COBRO*/}
       
       {/*MODAL ERROR VALIDACIÓN ESTRICTA*/}
-        <ModalConfirmAction 
+        <ModalConfirmAction
           confirmModal={(errorValidacionEstricta?true:false)}
           information={true}
           error={true}
@@ -824,7 +826,7 @@ const IndexFacturacionCiclica = props => {
             {errorValidacionEstricta[0]} <br /> 
             {errorValidacionEstricta[1]} <br />
             {errorValidacionEstricta[2]} <br /> 
-            {errorValidacionEstricta[3]} <br /> 
+            {errorValidacionEstricta[3]} 
           </p>)}
         />
       {/*MODAL ERROR VALIDACIÓN ESTRICTA*/}

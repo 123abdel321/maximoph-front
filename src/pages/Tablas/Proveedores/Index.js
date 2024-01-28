@@ -483,53 +483,50 @@ const Proveedores = props => {
 
           {accessModule.INGRESAR==false&&(<Card><Row><Col xl={12}><p className="text-center"><br /><b>NO TIENES ACCESO A VISUALIZAR PROVEEDORES</b></p></Col></Row></Card>)}
           
-          {accessModule.CREAR==true&&loadingFile==false&& !loadingText && enableForm==false &&(<Card>
+          {accessModule.CREAR==true&&loadingFile==false&& !loadingText && enableForm==false &&(
               <Row>
                 <Col xl={4}>
-                  <p className="text-center">
-                    <br />
-                    <Button onClick={()=>setEnableForm(true)} color="primary">
-                      Nuevo proveedor
-                    </Button>
-                    <br />
-                  </p>
+                  <Button onClick={()=>setEnableForm(true)} color="primary">
+                    <i className="bx bx-folder-plus" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Nuevo proveedor
+                  </Button>
                 </Col>
                 <Col xl={8}>
-                  <p className="text-center">
-                    <br />
-                      <ButtonDropdown isOpen={dropdowmImporterProviders} toggle={() => setDropdowmImporterProviders(!dropdowmImporterProviders)}>
-                        <DropdownToggle
-                          caret
-                          color="primary"
-                          className="btn btn-info"
-                        >
-                          Importador Proveedores
-                        </DropdownToggle>
-                        <DropdownMenu>
-                          <DropdownItem onClick={()=>downloadCSVImporter('proveedores')}>
-                            <Button color={'info'} className="btn-m"> 
-                              <i className="bx bx-download font-size-14 align-middle me-2"></i>
-                              {'Descargar Plantilla Proveedores'}
+                  <ButtonDropdown isOpen={dropdowmImporterProviders} toggle={() => setDropdowmImporterProviders(!dropdowmImporterProviders)}>
+                    <DropdownToggle
+                      caret
+                      color="primary"
+                      className="btn btn-info"
+                    >
+                      <i className="bx bx-import" style={{ fontSize: '18px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Importador Proveedores
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem onClick={()=>downloadCSVImporter('proveedores')}>
+                        <Button color={'info'} className="btn-m"> 
+                          <i className="bx bx-download font-size-14 align-middle me-2"></i>
+                          {'Descargar Plantilla Proveedores'}
+                        </Button>
+                      </DropdownItem>
+                      <DropdownItem>
+                        <Dropzone onDrop={csvFile => {uploadCSVImporter(csvFile, 'proveedores')}} >
+                          {({ getRootProps, getInputProps }) => (
+                            <Button color={'primary'} {...getRootProps()} className="btn-m"> 
+                              <input {...getInputProps()} />
+                              <i className="bx bx-upload font-size-14 align-middle me-2"></i>
+                              {'Importar Proveedores'}
                             </Button>
-                          </DropdownItem>
-                          <DropdownItem>
-                            <Dropzone onDrop={csvFile => {uploadCSVImporter(csvFile, 'proveedores')}} >
-                              {({ getRootProps, getInputProps }) => (
-                                <Button color={'primary'} {...getRootProps()} className="btn-m"> 
-                                  <input {...getInputProps()} />
-                                  <i className="bx bx-upload font-size-14 align-middle me-2"></i>
-                                  {'Importar Proveedores'}
-                                </Button>
-                              )}
-                            </Dropzone>
-                          </DropdownItem>
-                        </DropdownMenu>
-                      </ButtonDropdown>
-                    <br />
-                  </p>
+                          )}
+                        </Dropzone>
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </ButtonDropdown>
                 </Col>
+                <br/>
+                <br/>
+                <br/>
               </Row>
-            </Card>)}
+            )}
 
             {accessModule.CREAR==true&&loadingFile!=false&&(<Card>
               <Row>
@@ -544,15 +541,19 @@ const Proveedores = props => {
 
           {
             accessModule.INGRESAR==true && !loadingGrid && !loadingText && enableForm==false ?
-            (<TableContainer
-              columns={columns}
-              data={dataProviders}
-              isGlobalFilter={true}
-              isAddOptions={false}
-              customPageSize={10}
-              customPageSizeOptions={true}
-              className="custom-header-css"
-          />)
+            (
+              <div className="" style={{borderRadius: 18, backgroundColor: '#FFFFFF', padding: 10}}>
+                <TableContainer
+                  columns={columns}
+                  data={dataProviders}
+                  isGlobalFilter={true}
+                  isAddOptions={false}
+                  customPageSize={10}
+                  customPageSizeOptions={true}
+                  className="custom-header-css"
+                />
+              </div>
+            )
           :
           (<Row>
             <Col xl={12}>
