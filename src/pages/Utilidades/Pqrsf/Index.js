@@ -177,15 +177,19 @@ const IndexPQRSF = props => {
 
           {
             accessModule.INGRESAR==true && !loadingText ?
-            (<TableContainer
-              columns={columns}
-              data={data}
-              isGlobalFilter={true}
-              isAddOptions={false}
-              customPageSize={10}
-              customPageSizeOptions={true}
-              className="custom-header-css"
-          />)
+            (
+              <div className="" style={{borderRadius: 18, backgroundColor: '#FFFFFF', padding: 10}}>
+                <TableContainer
+                  columns={columns}
+                  data={data}
+                  isGlobalFilter={true}
+                  isAddOptions={false}
+                  customPageSize={10}
+                  customPageSizeOptions={true}
+                  className="custom-header-css"
+                />
+              </div>
+            )
           :
           (loadingText!="hidden" && loadingText!="" && (<Row>
             <Col xl={12}>

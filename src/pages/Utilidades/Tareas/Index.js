@@ -1040,21 +1040,16 @@ const IndexTareas = props => {
           {accessModule.INGRESAR==false&&(<Card><Row><Col xl={12}><p className="text-center"><br /><b>NO TIENES ACCESO A VISUALIZAR TAREAS</b></p></Col></Row></Card>)}
           
 
-          {accessModule.CREAR==true && !loadingText && enableForm==false &&(<Card>
+          {accessModule.CREAR==true && !loadingText && enableForm==false &&(
               <Row>
                 <Col xl={3}>
-                  <p className="text-center">
-                    <br />
-                    <Button onClick={()=>setEnableForm(true)} color="primary">
-                      Nueva tarea
-                    </Button>
-                    <br />
-                  </p>
+                  <Button onClick={()=>setEnableForm(true)} color="primary">
+                    <i className="bx bx-folder-plus" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Nueva tarea
+                  </Button>
                 </Col>
                 <Col xl={4}>
-                  <p className="text-center">
-                    <br />
-                    <Button color={classCreateBtn} onClick={()=>{ 
+                  <Button color={classCreateBtn} onClick={()=>{ 
                       if(accessModule.CREAR==true){
                         setNuevaTareaMasiva(true);
                       }else{
@@ -1062,29 +1057,28 @@ const IndexTareas = props => {
                         toastr.warning("No tienes acceso a crear Tareas", "Permisos");
                       }
                     }}>
+                      <i className="bx bx-add-to-queue" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       Asignar tareas masivamente
-                    </Button>
-                    <br />
-                  </p>
+                  </Button>
                 </Col>
                 <Col xl={4}>
-                  <p className="text-center">
-                    <br />
-                    <Button color={classDeleteBtn} onClick={()=>{ 
-                        if(accessModule.ELIMINAR==true){
-                          setEliminarTareaMasiva(true); 
-                        }else{
-                          toastr.options = { positionClass: 'toast-top-right' };
-                          toastr.warning("No tienes acceso a eliminar Tareas", "Permisos");
-                        }
-                      }}>
-                        Eliminar tareas masivamente
-                    </Button>
-                    <br />
-                  </p>
+                  <Button color={classDeleteBtn} onClick={()=>{ 
+                      if(accessModule.ELIMINAR==true){
+                        setEliminarTareaMasiva(true); 
+                      }else{
+                        toastr.options = { positionClass: 'toast-top-right' };
+                        toastr.warning("No tienes acceso a eliminar Tareas", "Permisos");
+                      }
+                    }}>
+                      <i className="bx bx-trash" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      Eliminar tareas masivamente
+                  </Button>
                 </Col>
+                <br/>
+                <br/>
+                <br/>
               </Row>
-            </Card>)}
+            )}
 
           {accessModule.INGRESAR==true&&!loadingText && enableForm==false&&(<Card>
             <Row>
@@ -1184,15 +1178,19 @@ const IndexTareas = props => {
 
           {
             accessModule.INGRESAR==true && !loadingText && enableForm==false ?
-            (<TableContainer
-              columns={columns}
-              data={dataTareasFiltered}
-              isGlobalFilter={true}
-              isAddOptions={false}
-              customPageSize={10}
-              customPageSizeOptions={true}
-              className="custom-header-css"
-          />)
+            (
+              <div className="" style={{borderRadius: 18, backgroundColor: '#FFFFFF', padding: 10}}>
+                <TableContainer
+                  columns={columns}
+                  data={dataTareasFiltered}
+                  isGlobalFilter={true}
+                  isAddOptions={false}
+                  customPageSize={10}
+                  customPageSizeOptions={true}
+                  className="custom-header-css"
+                />
+              </div>
+            )
           :
           (<Row>
             <Col xl={12}>

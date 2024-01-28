@@ -347,15 +347,19 @@ const IndexRolesPermisos = props => {
           
           {
             accessModule.INGRESAR==true && !loadingGrid && !loadingText ?
-              (<TableContainer
-                columns={columns}
-                data={dataUserRoles}
-                isGlobalFilter={true}
-                isAddOptions={false}
-                customPageSize={10}
-                customPageSizeOptions={true}
-                className="custom-header-css"
-            />)
+              (
+                <div className="" style={{borderRadius: 18, backgroundColor: '#FFFFFF', padding: 10}}>
+                  <TableContainer
+                    columns={columns}
+                    data={dataUserRoles}
+                    isGlobalFilter={true}
+                    isAddOptions={false}
+                    customPageSize={10}
+                    customPageSizeOptions={true}
+                    className="custom-header-css"
+                  />
+                </div>
+              )
             :
             (<Row>
               <Col xl={12}>
