@@ -61,8 +61,10 @@ const App = () => {
   
   useEffect(() => {
     const imagenes = [
-      //'general-background-2.png',
-      'general-background-6.png'
+      'general-background-1',
+      'general-background-2',
+      'general-background-3',
+      'general-background-4',
     ];
     
     const claseAleatoria = `background-${Math.floor(Math.random() * imagenes.length) + 1}`;
