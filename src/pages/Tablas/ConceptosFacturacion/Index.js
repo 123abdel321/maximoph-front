@@ -76,7 +76,7 @@ const IndexConceptosFacturacion = props => {
   };
 
   const [loadingText, setLoadingText] = useState('Cargando ...');
-  const [intereses, setIntereses] = useState({ label: "NO", value: "0" });
+  const [intereses, setIntereses] = useState({ label: "NO", value: 0 });
   const [cuentaIva, setCuentaIva] = useState();
   const [cuentaIngreso, setCuentaIngreso] = useState();
   const [cuentaXCobrar, setCuentaXCobrar] = useState();
@@ -114,7 +114,6 @@ const IndexConceptosFacturacion = props => {
       });
 
       setEditConceptoFactura(Number(conceptoFactura.id));
-
       setIntereses({label: (Number(conceptoFactura.intereses)?'SI':'NO'), value: conceptoFactura.intereses});
       
       setCuentaIva({value: conceptoFactura.id_cuenta_iva_erp, label: conceptoFactura.cuentaIvaLabel});
@@ -197,8 +196,7 @@ const IndexConceptosFacturacion = props => {
         toastr.error("Seleccione la cuenta contable x cobrar.", "Error en la validación");
         return;
       }
-      
-      conceptoFacturaValues["intereses"] = intereses.value == 'SI' ? 1 : 0;
+      conceptoFacturaValues["intereses"] = intereses.value;
       
       conceptoFacturaValues["id_cuenta_iva_erp"] = (cuentaIva ? cuentaIva.value : '');
       conceptoFacturaValues["id_cuenta_por_cobrar"] = cuentaXCobrar.value;
@@ -377,8 +375,8 @@ const IndexConceptosFacturacion = props => {
                                 value={intereses}
                                 onChange={value=>setIntereses(value)}
                                 options={[
-                                  { label: "NO", value: "0" },
-                                  { label: "SI", value: "1" }
+                                  { label: "NO", value: 0 },
+                                  { label: "SI", value: 1 }
                                 ]}
                                 className="select2-selection"
                                 theme={(theme) => ({
