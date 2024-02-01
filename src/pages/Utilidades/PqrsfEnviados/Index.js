@@ -464,31 +464,34 @@ const IndexPQRSFEnviados = props => {
             </Row>)
           }
           
-          {!loadingText && enableForm==false &&(<Card>
+          {!loadingText && enableForm==false &&(
               <Row>
                 <Col xl={3}>
-                  <p className="text-center">
-                    <br />
-                    <Button onClick={()=>setEnableForm(true)} color="primary">
-                      Nuevo PQRSF
-                    </Button>
-                    <br />
-                  </p>
+                  <Button onClick={()=>setEnableForm(true)} color="primary">
+                    <i className="bx bx-folder-plus" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Nuevo PQRSF
+                  </Button>
+                  <br/>
+                  <br/>
                 </Col>
               </Row>
-            </Card>)}
+            )}
 
           {
             false==false && !loadingText && enableForm==false ?
-            (<TableContainer
-              columns={columns}
-              data={data}
-              isGlobalFilter={true}
-              isAddOptions={false}
-              customPageSize={10}
-              customPageSizeOptions={true}
-              className="custom-header-css"
-          />)
+            (
+              <div className="" style={{borderRadius: 18, backgroundColor: '#FFFFFF', padding: 10}}>
+                <TableContainer
+                  columns={columns}
+                  data={data}
+                  isGlobalFilter={true}
+                  isAddOptions={false}
+                  customPageSize={10}
+                  customPageSizeOptions={true}
+                  className="custom-header-css"
+                />
+              </div>
+            )
           :
           (loadingText!="hidden" && loadingText!="" && (<Row>
             <Col xl={12}>

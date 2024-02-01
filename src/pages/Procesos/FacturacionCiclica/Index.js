@@ -579,10 +579,8 @@ const IndexFacturacionCiclica = props => {
                                 <br />
                                 <Button className="btn btn-danger btn-sm" onClick={()=>{setAnularFacturas(periodo)}}> ANULAR</Button>
                               </Col>*/}
-                            </Row>
-                            <br />
-                            <Row>
-                              <Col sm="12" style={{padding: 0}}>
+                              <br />
+                              <Col sm="12" style={{padding: 10}}>
                                   <TableContainer
                                     columns={columnsHistorico}
                                     totalsFnComponent={(dataF)=>{

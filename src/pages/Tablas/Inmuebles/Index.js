@@ -147,7 +147,7 @@ const IndexInmuebles = props => {
             <div className="d-flex flex-wrap">
               <div className="me-3">
                 <b className="text-muted mb-2">Inmuebles Registrados</b>
-                <h5 className="mb-0">{Number(propertiesTotals.unidades_ingresadas).toLocaleString()} de {Number(propertiesTotals.unidades_entorno).toLocaleString()}</h5>
+                <h5 className="mb-0">{Number(propertiesTotals.unidades_ingresadas).toLocaleString()} de {propertiesTotals.numero_unidades}</h5>
               </div>
 
               <div className="avatar-sm ms-auto">
@@ -203,7 +203,7 @@ const IndexInmuebles = props => {
           <CardBody>
             <div className="d-flex flex-wrap">
               <div className="me-3">
-                <b className="text-muted mb-2">Presupuesto Asignado Mensual$</b>
+                <b className="text-muted mb-2">Presupuesto Asignado Mensual</b>
                 <h5 className="mb-0">{Math.round(Number(propertiesTotals.ppto_ingresado)/12).toLocaleString()} de {Math.round(Number(propertiesTotals.ppto_entorno)/12).toLocaleString()}</h5>
               </div>
 
@@ -582,7 +582,7 @@ const IndexInmuebles = props => {
         {
           Header: 'Foto',
           accessor: row =>{
-            const IMAGE_URL = (process.env.REACT_API_URL||'https://api.maximoph.com')+"/uploads/pets/"+row.avatar;
+            const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/pets/"+row.avatar;
             if(row.avatar){
               return (<p className="text-center">
                 <img
@@ -1004,13 +1004,13 @@ const IndexInmuebles = props => {
           
           {accessModule.CREAR==true&&loadingFile==false&& !loadingText && enableForm==false &&(
             <Row>
-              <Col xl={4}>
+              <Col lg={4} md={4} sm={12} style={{ padding: 5 }}>
                 <Button onClick={()=>setEnableForm(true)} color="primary">
                   <i className="bx bx-folder-plus" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   Nuevo Inmueble
                 </Button>
               </Col>
-              <Col xl={4}>
+              <Col lg={4} md={4} sm={12} style={{ padding: 5 }}>
                 <ButtonDropdown isOpen={dropdowmImporterProperties} toggle={() => setDropdowmImporterProperties(!dropdowmImporterProperties)}>
                   <DropdownToggle
                     caret
@@ -1041,7 +1041,7 @@ const IndexInmuebles = props => {
                   </DropdownMenu>
                 </ButtonDropdown>
               </Col>
-              <Col xl={4}>
+              <Col lg={4} md={4} sm={12} style={{ padding: 5 }}>
                 <ButtonDropdown isOpen={dropdowmImporterPersons} toggle={() => setDropdowmImporterPersons(!dropdowmImporterPersons)}>
                   <DropdownToggle
                     caret

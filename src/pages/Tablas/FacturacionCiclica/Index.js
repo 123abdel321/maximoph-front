@@ -563,7 +563,8 @@ const IndexFacturacionCiclica = props => {
             <div className="d-flex flex-wrap">
               <div className="me-3">
                 <b className="text-muted mb-2">Inmuebles con Factura</b>
-                <h5 className="mb-0">{Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de {cyclicalBillsTotals.unidades_entorno ? Number(cyclicalBillsTotals.unidades_entorno).toLocaleString() : 0}</h5>
+                
+                <h5 className="mb-0">{Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de {cyclicalBillsTotals.numero_unidades}</h5>
               </div>
 
               <div className="avatar-sm ms-auto">
