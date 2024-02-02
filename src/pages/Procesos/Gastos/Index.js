@@ -324,7 +324,7 @@ const IndexGastos = props => {
           Header: 'Operaciones',
           accessor: gasto => {
             let classViewBtn = accessModule.INGRESAR==true ? "primary" : "secondary";
-            let classEditBtn = accessModule.ACTUALIZAR==true ? "primary" : "secondary";
+            let classEditBtn = accessModule.ACTUALIZAR==true ? "success" : "secondary";
             let classCancelBtn = accessModule.ELIMINAR==true ? "warning" : "secondary";
             let classDeleteBtn = accessModule.ELIMINAR==true ? "danger" : "secondary";
 
@@ -337,7 +337,7 @@ const IndexGastos = props => {
                 {" "}
                 <Button color={classEditBtn} className="btn-sm" onClick={()=>{editGastoFn(gasto)}}>
                     <i className="bx bx-pencil font-size-14 align-middle el-mobile"></i>
-                    <span className="el-desktop">Editar</span>
+                    <span className="el-desktop" style={{ color: 'white' }}>Editar</span>
                 </Button>
                 {' '}
                 <Button color={classCancelBtn} className="btn-sm" onClick={()=>{deleteGastoModal(gasto, false)}}> 

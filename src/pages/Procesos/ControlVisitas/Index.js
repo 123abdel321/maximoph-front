@@ -354,9 +354,9 @@ const IndexVisitas = props => {
 
   const withButtons = (row)=>{
     return (<>
-      {<Button color="primary" className="btn-sm" onClick={()=>editControlVisitaFnFT(row)}> 
+      {<Button color="success" className="btn-sm" onClick={()=>editControlVisitaFnFT(row)}> 
           <i className="bx bx-pencil font-size-14 align-middle el-mobile"></i>
-          <span className="el-desktop">Editar</span>
+          <span className="el-desktop" style={{ color: 'white' }}>Editar</span>
     </Button>}
       {' '}
       <Button className="btn btn-danger btn-sm" onClick={()=>{deleteControlVisitaModal(row)}}> 

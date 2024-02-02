@@ -125,7 +125,6 @@ const IndexInmuebleInquilinoPropietario = props => {
     setConfirmEliminarInmuebleInquilinoPropietario(false);
     setConfirmModalEliminarInmuebleInquilinoPropietario(false);
     
-
     setLoadingText('Eliminando Inmueble Propietario/Inquilino...')
 
     dispatch(deletePropertyOwnerRenter(confirmEliminarInmuebleInquilinoPropietario.id, ()=>{
@@ -322,9 +321,9 @@ const IndexInmuebleInquilinoPropietario = props => {
 
   const withButtons = (inmuebleInquilinoPropietario)=>{
     return (<>
-      <Button color="primary" className="btn-sm" onClick={()=>{editInmuebleInquilinoPropietarioFn(inmuebleInquilinoPropietario)}}> 
+      <Button color="success" className="btn-sm" onClick={()=>{editInmuebleInquilinoPropietarioFn(inmuebleInquilinoPropietario)}}> 
           <i className="bx bx-pencil font-size-14 align-middle el-mobile"></i>
-          <span className="el-desktop">Editar</span>
+          <span className="el-desktop" style={{ color: 'white' }}>Editar</span>
       </Button>
       {' '}
       <Button className="btn btn-danger btn-sm" onClick={()=>{deleteInmuebleInquilinoPropietarioModal(inmuebleInquilinoPropietario)}}> 
@@ -423,6 +422,16 @@ const IndexInmuebleInquilinoPropietario = props => {
                 </Row>)
             }
           {/*DATATABLE PROPIETARIOS INQUILINOS*/}
+        </Col>
+
+        <Col xl={12}>
+            {/* <Button type="reset" color="warning" onClick={cancelInmueble} >
+              Cancelar
+            </Button>
+            {" "}
+            <Button type="submit" color="primary">
+              Grabar
+            </Button> */}
         </Col>
       </Row>
 

@@ -314,13 +314,13 @@ const IndexClientesMaximo = props => {
           sticky: true,
           Header: 'Operaciones',
           accessor: customer => {
-            let classEditBtn = accessModule.ACTUALIZAR==true ? "primary" : "secondary";
+            let classEditBtn = accessModule.ACTUALIZAR==true ? "success" : "secondary";
             let classDeleteBtn = accessModule.ELIMINAR==true ? "danger" : "secondary";
 
             return (<p className="text-center">
               <Button color={classEditBtn} className="btn-sm" onClick={()=>{editCustomerFn(customer)}}>
                 <i className="bx bx-pencil font-size-14 align-middle el-mobile"></i>
-                <span className="el-desktop">Editar</span>
+                <span className="el-desktop" style={{ color: 'white' }}>Editar</span>
               </Button>
             </p>);
             

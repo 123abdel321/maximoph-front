@@ -161,7 +161,7 @@ const IndexRolesPermisos = props => {
           Header: 'Operaciones',
           accessor: row => {
             let classViewBtn = accessModule.INGRESAR==true ? "info" : "secondary";
-            let classEditBtn = accessModule.ACTUALIZAR==true ? "primary" : "secondary";
+            let classEditBtn = accessModule.ACTUALIZAR==true ? "success" : "secondary";
 
             if(row.id_cliente){
               return (<div className="text-center">

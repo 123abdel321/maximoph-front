@@ -340,6 +340,12 @@ const SidebarContent = props => {
                   <li>
                     <Link onClick={tToggle} to="/procesos/facturacion-historico">{'Cuentas de Cobro'}</Link>
                   </li>
+                  <li>
+                    <Link onClick={tToggle} to="/procesos/autorizar-visitantes">{'Visitas y Autorizados'}</Link>
+                  </li>
+                  <li>
+                    <Link onClick={tToggle} to="/procesos/autorizaciones">{'Autorizaciones'}</Link>
+                  </li>
                   <hr />
                   <li>
                     <Link onClick={tToggle} to="/tablas/proveedores-landing">{'Proveedores'}</Link>

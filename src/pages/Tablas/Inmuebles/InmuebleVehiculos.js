@@ -321,9 +321,9 @@ const IndexInmuebleVehiculos = props => {
 
   const withButtons = (inmuebleVehiculo)=>{
     return (<>
-      <Button color="primary" className="btn-sm" onClick={()=>{editInmuebleVehiculoFn(inmuebleVehiculo)}}> 
+      <Button color="success" className="btn-sm" onClick={()=>{editInmuebleVehiculoFn(inmuebleVehiculo)}}> 
           <i className="bx bx-pencil font-size-14 align-middle el-mobile"></i>
-          <span className="el-desktop">Editar</span>
+          <span className="el-desktop" style={{ color: 'white' }}>Editar</span>
       </Button>
       {' '}
       <Button className="btn btn-danger btn-sm" onClick={()=>{deleteInmuebleVehiculoModal(inmuebleVehiculo)}}>

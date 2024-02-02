@@ -313,9 +313,9 @@ const IndexInmuebleVisitantes = props => {
 
   const withButtons = (inmuebleVisitante)=>{
     return (<>
-      <Button color="primary" className="btn-sm" onClick={()=>{editInmuebleVisitanteFn(inmuebleVisitante)}}> 
+      <Button color="success" className="btn-sm" onClick={()=>{editInmuebleVisitanteFn(inmuebleVisitante)}}> 
           <i className="bx bx-pencil font-size-14 align-middle el-mobile"></i>
-          <span className="el-desktop">Editar</span>
+          <span className="el-desktop" style={{ color: 'white' }}>Editar</span>
       </Button>
       {' '}
       <Button className="btn btn-danger btn-sm" onClick={()=>{deleteInmuebleVisitanteModal(inmuebleVisitante)}}>

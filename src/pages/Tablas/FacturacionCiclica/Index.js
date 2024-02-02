@@ -429,7 +429,7 @@ const IndexFacturacionCiclica = props => {
           sticky: true,
           Header: 'Operaciones',
           accessor: row => {
-            let classEditBtn = accessModule.ACTUALIZAR==true ? "primary" : "secondary";
+            let classEditBtn = accessModule.ACTUALIZAR==true ? "success" : "secondary";
             let classDeleteBtn = accessModule.ELIMINAR==true ? "danger" : "secondary";
 
             if(row.concepto_bloqueado==1) return (<p className="text-center"><Button className="btn-sm" color={"secondary"}><b>CONCEPTO BASE - NO EDITABLE</b></Button></p>);
@@ -437,7 +437,7 @@ const IndexFacturacionCiclica = props => {
             return (<p className="text-center">
               <Button color={classEditBtn}className="btn-sm" onClick={()=>{editFacturaCiclicaFn(row)}}>
                   <i className="bx bx-pencil font-size-14 align-middle el-mobile"></i>
-                  <span className="el-desktop">Editar</span>
+                  <span className="el-desktop" style={{ color: 'white' }}>Editar</span>
               </Button>
               {' '}
               <Button color={classDeleteBtn} className="btn-sm" onClick={()=>{deleteFacturaCiclicaModal(row)}}> 
