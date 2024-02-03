@@ -10,7 +10,7 @@ const Footer = () => {
             <Col md={6}></Col>
             <Col md={6}>
               <div className="text-sm-end d-none d-sm-block">
-                {new Date().getFullYear()} © Máximo PH - <a href="test.portafolioerp.com">Powered by Portafolio ERP</a>
+                {new Date().getFullYear()} © Máximo PH - <a href="https://test.portafolioerp.com" target="_blank">Powered by Portafolio ERP</a>
               </div>
             </Col>
           </Row>

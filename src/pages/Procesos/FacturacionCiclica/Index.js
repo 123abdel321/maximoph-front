@@ -495,8 +495,8 @@ const IndexFacturacionCiclica = props => {
                                     <Button color="primary"  onClick={()=>{
                                       let errors = [];
 
-                                      if(Number(cyclicalBillsTotals.unidades_ingresadas)!=Number(cyclicalBillsTotals.unidades_entorno)){
-                                        errors.push(`Inmuebles con Factura Registradas: ${Number(cyclicalBillsTotals.unidades_ingresadas).toLocaleString()} de ${cyclicalBillsTotals.numero_unidades}`);
+                                      if(Number(cyclicalBillsTotals.unidades_ingresadas)!=Number(cyclicalBillsTotals.numero_unidades)){
+                                        errors.push(`Inmuebles con Factura Registradas: ${Number(cyclicalBillsTotals.numero_unidades).toLocaleString()} de ${cyclicalBillsTotals.numero_unidades}`);
                                       }
                                       
                                       if(Number(cyclicalBillsTotals.coeficiente_ingresado)!=Number(cyclicalBillsTotals.coeficiente_entorno)){

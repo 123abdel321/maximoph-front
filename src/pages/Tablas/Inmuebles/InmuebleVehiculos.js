@@ -5,6 +5,8 @@ import {
   Col,
   Row,
   Button,
+  ButtonGroup,
+  CardFooter,
   Form,
   Input,
   Modal,
@@ -16,6 +18,7 @@ import {
 import RemoteCombo from "../../../components/Maximo/RemoteCombo";
 
 import Dropzone from "react-dropzone";
+import logoDark from "../../../assets/images/logo-dark.png";
 
 // Formik validation
 import * as Yup from "yup";
@@ -406,6 +409,7 @@ const IndexInmuebleVehiculos = props => {
 
   useEffect(()=>{
     loadInmuebleVehiculo();
+    console.log('dataPropertyVehicles: ',dataPropertyVehicles);
   },[]);
 
   return (
@@ -418,21 +422,107 @@ const IndexInmuebleVehiculos = props => {
               setLoadingText('Creando Inmueble Vehiculo...');
               setRegisterNuevoInmuebleVehiculo(true);
             }}>
-                Nuevo
+                <i className="bx bx-folder-plus" style={{ fontSize: '20px', position: 'absolute' }}></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Nuevo vehiculo
             </Button>
             <br />
             <br />
             {
               !loadingGrid && !loadingText ?
-                (<TableContainer
-                    columns={columnsVehiculos}
-                    data={dataPropertyVehicles}
-                    isGlobalFilter={false}
-                    isAddOptions={false}
-                    customPageSize={1000}
-                    removePagination={true}
-                    className="custom-header-css"
-                />)
+                (
+                  <div>
+                    
+                    <Row className="align-items-center">
+                      {dataPropertyVehicles.map((data, i) => {
+                        return (
+                          <Col lg={4} md={6} sm={12}>
+                            <Card
+                              className="mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete"
+                              key={i + "-file"}
+                              style={{textAlign: "center", padding: '10px'}}
+                            >
+                              <Row className="align-items-center">
+                                <Col lg={4} md={4} sm={4}>
+                                  <i className="bx bx-camera align-middle" style={{ fontSize: '20px', backgroundColor: 'rgb(0 215 210)', padding: '3px', borderRadius: '30px', position: 'absolute', marginLeft: '10px', color: 'cornsilk !important' }}></i>
+                                  {data.avatar ? 
+                                    <img
+                                      data-dz-thumbnail=""
+                                      className=""
+                                      alt={data.placa}
+                                      style={{maxHeight: '6rem', cursor: 'pointer'}}
+                                      src={(process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/vehicles/"+data.avatar}
+                                      onClick={async ()=>{
+                                        setEditVehiculoPhoto(Number(data.id));
+                                        setUploadFotoInmuebleVehiculoModal(true);
+
+                                        if(data.avatar){
+                                          const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/vehicles/"+data.avatar;
+                                          const response = await fetch(IMAGE_URL);
+                                          const blob = await response.blob();
+                                          const fileType = blob.type;
+                                          const file = new File([blob], data.avatar, { type: fileType });
+
+                                          handleAcceptedFiles([file]);
+                                        }
+
+                                      }}
+                                    />
+                                    :
+                                    <img
+                                      data-dz-thumbnail=""
+                                      className=""
+                                      alt={data.placa}
+                                      style={{maxHeight: '6rem', cursor: 'pointer'}}
+                                      src={logoDark}
+                                      onClick={async ()=>{
+                                        setEditVehiculoPhoto(Number(data.id));
+                                        setUploadFotoInmuebleVehiculoModal(true);
+
+                                        if(data.avatar){
+                                          const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/vehicles/"+data.avatar;
+                                          const response = await fetch(IMAGE_URL);
+                                          const blob = await response.blob();
+                                          const fileType = blob.type;
+                                          const file = new File([blob], data.avatar, { type: fileType });
+
+                                          handleAcceptedFiles([file]);
+                                        }
+
+                                      }}
+                                    />
+                                  }
+                                </Col>
+                                <Col lg={8} md={8} sm={8}>
+                                  <p className="mb-0">
+                                    <strong>{ data.tipoText }: { data.placa }</strong><br/>
+                                    <strong>Persona: </strong>{ data.personaAutorizaText }<br/>
+                                    <strong>Días/Fechas: </strong>{ data.diasText }
+                                  </p>
+                                </Col>
+                                {/* {withButtons(data.id)} */}
+                              </Row>
+                              <CardFooter>
+                                <Row className="align-items-center">
+                                  <Col lg={6} md={6} sm={6}>
+                                    <Button color="success" className="btn-sm" onClick={()=>{editInmuebleVehiculoFn(data)}}> 
+                                      <span style={{ color: 'white' }}>Editar</span>
+                                    </Button>
+                                  </Col>
+                                  <Col lg={6} md={6} sm={6}>
+                                    <Button className="btn btn-danger btn-sm" onClick={()=>{deleteInmuebleVehiculoModal(data.id)}}>
+                                      <span>Eliminar</span>
+                                    </Button>
+                                  </Col>
+
+                                </Row>
+                              </CardFooter>
+                            </Card>
+                          </Col>
+                        )
+                      })}
+                    </Row>
+                  </div>
+                )
               :
                 (<Row>
                   <Col xl={12}>
