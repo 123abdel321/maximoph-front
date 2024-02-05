@@ -390,15 +390,15 @@ const IndexInmuebleMascotas = props => {
                                       style={{maxHeight: '6rem', cursor: 'pointer'}}
                                       src={(process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/pets/"+data.avatar}
                                       onClick={async ()=>{
-                                        setEditMascotaPhoto(Number(inmuebleMascota.id));
+                                        setEditMascotaPhoto(Number(data.id));
                                         setUploadFotoInmuebleMascotaModal(true);
 
-                                        if(inmuebleMascota.avatar){
-                                          const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/pets/"+inmuebleMascota.avatar;
+                                        if(data.avatar){
+                                          const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/pets/"+data.avatar;
                                           const response = await fetch(IMAGE_URL);
                                           const blob = await response.blob();
                                           const fileType = blob.type;
-                                          const file = new File([blob], inmuebleMascota.avatar, { type: fileType });
+                                          const file = new File([blob], data.avatar, { type: fileType });
 
                                           handleAcceptedFiles([file]);
                                         }
@@ -412,15 +412,15 @@ const IndexInmuebleMascotas = props => {
                                       style={{maxHeight: '6rem', cursor: 'pointer'}}
                                       src={logoDark}
                                       onClick={async ()=>{
-                                        setEditMascotaPhoto(Number(inmuebleMascota.id));
+                                        setEditMascotaPhoto(Number(data.id));
                                         setUploadFotoInmuebleMascotaModal(true);
 
-                                        if(inmuebleMascota.avatar){
-                                          const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/pets/"+inmuebleMascota.avatar;
+                                        if(data.avatar){
+                                          const IMAGE_URL = (process.env.REACT_API_URL||'https://phapi.portafolioerp.com')+"/uploads/pets/"+data.avatar;
                                           const response = await fetch(IMAGE_URL);
                                           const blob = await response.blob();
                                           const fileType = blob.type;
-                                          const file = new File([blob], inmuebleMascota.avatar, { type: fileType });
+                                          const file = new File([blob], data.avatar, { type: fileType });
 
                                           handleAcceptedFiles([file]);
                                         }
