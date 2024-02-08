@@ -429,23 +429,21 @@ const IndexFacturacionHistorica = props => {
 
   const loadFacturasHistorico = ()=>{
     setLoadingText('Cargando ...');
-
+    
     dispatch(getBillCashOwnVouchers((billCashVouchers)=>{
       setDataComprobantes(billCashVouchers.data);
-
-      dispatch(getBillCashReceipts(null, (billCashReceipts)=>{ 
-
+      dispatch(getBillCashReceipts(null, (billCashReceipts)=>{
         dispatch(getBillsDetails(withButtons,(resp)=>{
           let dataDetailToFilter = [];
           let consecutivos = [];
-
           let emailUser = JSON.parse(localStorage.getItem("authUser")).email.toUpperCase();
+
           let id_persona = 0;
           let id_tercero_erp = 0;
           let documento_tercero = 0;
 
           resp.data.map(billDe=>{
-            if(billDe.emailPropietario.toUpperCase()==emailUser){
+            if(billDe.emailPropietario && billDe.emailPropietario.toUpperCase()==emailUser){
               dataDetailToFilter.push(billDe);
               if(!id_persona) id_persona = billDe.id_persona;
               if(!id_tercero_erp) id_tercero_erp = billDe.id_tercero_erp;
